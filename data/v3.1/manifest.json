@@ -1,0 +1,27 @@
+{
+  "copied": {
+    "Discovery_Catalog_QA_v3.1.md": {
+      "bytes": 3649,
+      "sha256": "cf3dd0eabb38db45da8b061fc3e84db01205077f194646ae8f6194f07de00e70"
+    },
+    "Oberfranken_Knowledge_Base_Merged_v3.1.jsonl": {
+      "bytes": 818873,
+      "sha256": "d3921d7c1525ec4458fb3296b501a232cd030ec8fc91fb83830e44dc56654f06"
+    },
+    "catalog.json": {
+      "bytes": 33317,
+      "sha256": "dd8104c218ad88f6eccb8c0b0e3a3eceeaa0fe3e002a0447a45ac8dab918ef64"
+    }
+  },
+  "copied_at": "2026-10-09T14:06:18.452696+00:00",
+  "kb_digest": "d70ce2147668e94745876b125ef242f2de219ab0cfb8a6dc380817f1f904d96e",
+  "record_count": 249,
+  "schema_version": 1,
+  "source_root": "/Users/alimk/Documents/Obsidian/Claude/vault/Oberfranken/Data/v3.1",
+  "source_sha256": {
+    "Discovery_Catalog_QA_v3.1.md": "cf3dd0eabb38db45da8b061fc3e84db01205077f194646ae8f6194f07de00e70",
+    "Oberfranken_Knowledge_Base_Merged_v3.1.jsonl": "d3921d7c1525ec4458fb3296b501a232cd030ec8fc91fb83830e44dc56654f06",
+    "Oberfranken_Knowledge_Base_Merged_v3.1.md": "d70ce2147668e94745876b125ef242f2de219ab0cfb8a6dc380817f1f904d96e",
+    "catalog.json": "dd8104c218ad88f6eccb8c0b0e3a3eceeaa0fe3e002a0447a45ac8dab918ef64"
+  }
+}

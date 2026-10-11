@@ -1,0 +1,172 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+/*
+ * Design tokens (see DESIGN.md).
+ * Layer 1 — primitives: the ONLY place raw colour values appear.
+ * Layer 2 — semantic: shadcn-compatible names used by components.
+ * Layer 3 — Tailwind theme mapping (@theme inline).
+ */
+:root {
+  /* 1 · primitives (logo colours sampled from the supplied logo) */
+  --palette-paper: #ffffff;
+  --palette-ice-50: #f5f9fc;
+  --palette-ice-100: #eef5fa;
+  --palette-ice-200: #ddebf3;
+  --palette-sky: #a8d2ed;
+  --palette-crimson: #c92c21;
+  --palette-crimson-deep: #a8231a;
+  --palette-crimson-shadow: #8b2121;
+  --palette-crimson-wash: #fbeeed;
+  --palette-ink: #1e2329;
+  --palette-ink-2: #3a424c;
+  --palette-slate: #5b6470;
+  --palette-line: #e3e7eb;
+
+  /* 2 · semantic */
+  --background: var(--palette-paper);
+  --foreground: var(--palette-ink);
+  --foreground-soft: var(--palette-ink-2);
+  --primary: var(--palette-crimson);
+  --primary-hover: var(--palette-crimson-deep);
+  --primary-foreground: var(--palette-paper);
+  --primary-wash: var(--palette-crimson-wash);
+  --secondary: var(--palette-ice-100);
+  --secondary-foreground: var(--palette-ink);
+  --muted: var(--palette-ice-100);
+  --muted-foreground: var(--palette-slate);
+  --accent: var(--palette-ice-50);
+  --accent-foreground: var(--palette-ink);
+  --popover: var(--palette-paper);
+  --popover-foreground: var(--palette-ink);
+  --card: var(--palette-paper);
+  --card-foreground: var(--palette-ink);
+  --border: var(--palette-line);
+  --border-cool: var(--palette-ice-200);
+  --input: var(--palette-line);
+  --ring: var(--palette-crimson);
+  --surface-cool: var(--palette-ice-100);
+  --brand-sky: var(--palette-sky);
+  --destructive: var(--palette-crimson-deep);
+
+  --radius: 0.5rem;
+  --container-max: 75rem;
+  --header-height: 76px;
+}
+
+/* 3 · Tailwind theme mapping */
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-foreground-soft: var(--foreground-soft);
+  --color-primary: var(--primary);
+  --color-primary-hover: var(--primary-hover);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary-wash: var(--primary-wash);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-border: var(--border);
+  --color-border-cool: var(--border-cool);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-surface-cool: var(--surface-cool);
+  --color-brand-sky: var(--brand-sky);
+  --color-destructive: var(--destructive);
+
+  --font-serif: "Newsreader Variable", "Iowan Old Style", Georgia, serif;
+  --font-sans: "Public Sans Variable", "Helvetica Neue", Arial, sans-serif;
+
+  --text-display: 6.5rem;
+  --text-display--line-height: 1;
+  --text-display--letter-spacing: -0.03em;
+  --text-headline: 3.5rem;
+  --text-headline--line-height: 1.05;
+  --text-headline--letter-spacing: -0.02em;
+  --text-title: 2.5rem;
+  --text-title--line-height: 1.1;
+  --text-title--letter-spacing: -0.015em;
+
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: var(--radius);
+  --radius-lg: calc(var(--radius) + 6px);
+
+  --shadow-float: 0 24px 60px -24px rgb(30 35 41 / 0.28), 0 2px 8px rgb(30 35 41 / 0.06);
+
+  --ease-out-soft: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-padding-top: calc(var(--header-height) + 16px);
+    -webkit-text-size-adjust: 100%;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    html {
+      scroll-behavior: smooth;
+    }
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    min-width: 1024px;
+    line-height: 1.6;
+    font-optical-sizing: auto;
+  }
+
+  h1,
+  h2,
+  h3 {
+    @apply font-serif font-normal text-foreground;
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--ring);
+    outline-offset: 2px;
+    border-radius: 2px;
+  }
+
+  ::selection {
+    background: var(--brand-sky);
+    color: var(--foreground);
+  }
+
+  button {
+    cursor: pointer;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
+
+@utility container-page {
+  width: 100%;
+  max-width: calc(var(--container-max) + 5rem);
+  margin-inline: auto;
+  padding-inline: 2.5rem;
+}

@@ -1,0 +1,888 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-10-09",
+  "kbVersion": "2026-10-09-v3.1",
+  "kbDigest": "d70ce2147668e94745876b125ef242f2de219ab0cfb8a6dc380817f1f904d96e",
+  "records": [
+    {
+      "id": "BA-SPORT-01",
+      "city": "bamberg",
+      "topic": "activities-fun",
+      "recordType": "sports-club",
+      "discoveryCategory": "sports",
+      "order": 1,
+      "verification": "verified",
+      "title": {
+        "de": "Bamberg Baskets",
+        "en": "Bamberg Baskets"
+      },
+      "summary": {
+        "de": "Profibasketballteam mit einer langen und erfolgreichen Geschichte in Bamberg.",
+        "en": "Professional basketball team with a long and successful history in Bamberg."
+      },
+      "whyNotable": {
+        "de": "Mehrere nationale Titel belegen die besondere Rolle des Teams in Bambergs Sportkultur.",
+        "en": "Multiple national titles document the team's special role in Bamberg's sporting culture."
+      },
+      "source": {
+        "name": "Bamberg Baskets",
+        "url": "https://easycredit-bbl.de/de/n/news/2026/august/easycredit-bbl-veroeffentlicht-vorlaeufigen-spielplan-fuer-saison-26-27-heimpartie-des-deutschen-meisters-alba-berlin-als-eroeffnung",
+        "retrievedAt": "2026-10-08"
+      },
+      "details": {
+        "sport": {
+          "de": "Basketball",
+          "en": "Basketball"
+        },
+        "achievement": {
+          "de": "Neun deutsche Meisterschaften und sechs Pokalsiege",
+          "en": "Nine German championships and six cup wins"
+        },
+        "participationType": "spectator",
+        "homeVenue": "Arena Bamberg"
+      }
+    },
+    {
+      "id": "BA-SPORT-02",
+      "city": "bamberg",
+      "topic": "activities-fun",
+      "recordType": "sports-club",
+      "discoveryCategory": "sports",
+      "order": 2,
+      "verification": "verified",
+      "title": {
+        "de": "FC Eintracht Bamberg",
+        "en": "FC Eintracht Bamberg"
+      },
+      "summary": {
+        "de": "Aktiver Bamberger Fußballverein mit Herrenmannschaft und lokaler Verankerung.",
+        "en": "Active Bamberg football club with a men's team and strong local roots."
+      },
+      "whyNotable": {
+        "de": "Der Verein bietet einen konkreten Zugang zur regionalen Fußballkultur der Stadt.",
+        "en": "The club offers a direct way to experience the city's regional football culture."
+      },
+      "source": {
+        "name": "Bayerischer Fußball-Verband",
+        "url": "https://www.bfv.de/mannschaften/fc-eintracht-bamberg-1/01ABSVJN6G000000VV0AG811VV70TPHT",
+        "retrievedAt": "2026-10-08"
+      },
+      "details": {
+        "sport": {
+          "de": "Fußball",
+          "en": "Football"
+        },
+        "achievement": null,
+        "participationType": "both",
+        "homeVenue": "Fuchsparkstadion"
+      }
+    },
+    {
+      "id": "BA-SPORT-03",
+      "city": "bamberg",
+      "topic": "activities-fun",
+      "recordType": "sports-club",
+      "discoveryCategory": "sports",
+      "order": 3,
+      "verification": "verified",
+      "title": {
+        "de": "DJK Don Bosco Bamberg",
+        "en": "DJK Don Bosco Bamberg"
+      },
+      "summary": {
+        "de": "Bamberger Fußballverein mit Herren- und Nachwuchsarbeit in Wildensorg.",
+        "en": "Bamberg football club with senior and youth programmes in Wildensorg."
+      },
+      "whyNotable": {
+        "de": "Der Club verbindet regionalen Fußball mit dokumentierter Nachwuchsarbeit.",
+        "en": "The club combines regional football with documented youth development."
+      },
+      "source": {
+        "name": "Bayerischer Fußball-Verband",
+        "url": "https://www.bfv.de/news/bayernliga/2026/einteilung-bayernliga-nord-und-sud-2026-27",
+        "retrievedAt": "2026-10-08"
+      },
+      "details": {
+        "sport": {
+          "de": "Fußball",
+          "en": "Football"
+        },
+        "achievement": null,
+        "participationType": "both",
+        "homeVenue": "Rudi-Ziegler-Sportanlage"
+      }
+    },
+    {
+      "id": "BA-SIGHT-01",
+      "city": "bamberg",
+      "topic": "cultural-places",
+      "recordType": "sight",
+      "discoveryCategory": "sights",
+      "order": 4,
+      "verification": "verified",
+      "title": {
+        "de": "Bamberger Dom",
+        "en": "Bamberg Cathedral"
+      },
+      "summary": {
+        "de": "Zentraler Sakralbau auf dem Domberg und wichtiger Orientierungspunkt der Welterbestadt.",
+        "en": "Major sacred building on Cathedral Hill and a key landmark of the World Heritage city."
+      },
+      "whyNotable": {
+        "de": "Der Dom macht die mittelalterliche Macht- und Stadtgeschichte Bambergs räumlich verständlich.",
+        "en": "The cathedral makes Bamberg's medieval power and urban history tangible."
+      },
+      "source": {
+        "name": "Bamberg Tourismus",
+        "url": "https://whc.unesco.org/en/list/624",
+        "retrievedAt": "2026-10-08"
+      },
+      "details": {
+        "whyVisit": {
+          "de": "Als Ausgangspunkt, um Domberg und Altstadtgefüge zu verstehen.",
+          "en": "As a starting point for understanding Cathedral Hill and the old-town layout."
+        },
+        "keyHighlight": {
+          "de": "Kaisergrab, Bamberger Reiter und bedeutende Altäre",
+          "en": "Imperial tomb, Bamberg Horseman and major altars"
+        },
+        "significance": {
+          "de": "Kaiserdom im historischen Zusammenhang der Bamberger Welterbestadt",
+          "en": "Imperial cathedral within Bamberg's World Heritage urban landscape"
+        }
+      }
+    },
+    {
+      "id": "BA-SIGHT-02",
+      "city": "bamberg",
+      "topic": "cultural-places",
+      "recordType": "sight",
+      "discoveryCategory": "sights",
+      "order": 5,
+      "verification": "verified",
+      "title": {
+        "de": "Altes Rathaus",
+        "en": "Old Town Hall"
+      },
+      "summary": {
+        "de": "Bemaltes Rathaus auf einer Insel in der Regnitz, verbunden durch historische Brücken.",
+        "en": "Painted town hall on an island in the Regnitz, linked by historic bridges."
+      },
+      "whyNotable": {
+        "de": "Seine ungewöhnliche Lage veranschaulicht das Verhältnis von Bürgerstadt, Fluss und Domberg.",
+        "en": "Its unusual location illustrates the relationship between the civic town, river and Cathedral Hill."
+      },
+      "source": {
+        "name": "Bamberg Tourismus",
+        "url": "https://www.bamberg.info/poi/altes_rathaus-4656",
+        "retrievedAt": "2026-10-08"
+      },
+      "details": {
+        "whyVisit": {
+          "de": "Für die markante Außenansicht und einen direkten Blick auf Bambergs Stadtstruktur.",
+          "en": "For its striking exterior and a direct view of Bamberg's urban structure."
+        },
+        "keyHighlight": {
+          "de": "Illusionistische Fassadenmalerei und Lage in der Regnitz",
+          "en": "Illusionistic façade painting and location in the Regnitz"
+        },
+        "significance": {
+          "de": "Symbol der historischen Bürgerstadt zwischen den Stadträumen",
+          "en": "Symbol of the historic civic town between Bamberg's urban areas"
+        }
+      }
+    },
+    {
+      "id": "BA-SIGHT-03",
+      "city": "bamberg",
+      "topic": "cultural-places",
+      "recordType": "sight",
+      "discoveryCategory": "sights",
+      "order": 6,
+      "verification": "verified",
+      "title": {
+        "de": "Klein Venedig",
+        "en": "Little Venice"
+      },
+      "summary": {
+        "de": "Ehemaliges Fischerviertel mit dicht gereihten Fachwerkhäusern am Regnitzufer.",
+        "en": "Former fishing quarter with closely packed timber-framed houses along the Regnitz."
+      },
+      "whyNotable": {
+        "de": "Das Ensemble zeigt Bamberger Alltagsgeschichte und die enge Beziehung zwischen Handwerk und Fluss.",
+        "en": "The ensemble shows Bamberg's everyday history and the close relationship between craft and river."
+      },
+      "source": {
+        "name": "Bamberg Tourismus",
+        "url": "https://www.bamberg.info/poi/klein_venedig-4650",
+        "retrievedAt": "2026-10-08"
+      },
+      "details": {
+        "whyVisit": {
+          "de": "Für den Uferblick auf historische Häuser, Gärten und Bootsplätze.",
+          "en": "For the riverside view of historic houses, gardens and boat moorings."
+        },
+        "keyHighlight": {
+          "de": "Fachwerkhäuser des früheren Fischerviertels",
+          "en": "Timber-framed houses of the former fishing quarter"
+        },
+        "significance": {
+          "de": "Anschauliches Zeugnis von Wohnen und Arbeiten am Fluss",
+          "en": "Tangible evidence of living and working beside the river"
+        }
+      }
+    },
+    {
+      "id": "BA-SIGHT-04",
+      "city": "bamberg",
+      "topic": "cultural-places",
+      "recordType": "sight",
+      "discoveryCategory": "sights",
+      "order": 7,
+      "verification": "verified",
+      "title": {
+        "de": "Rosengarten der Neuen Residenz",
+        "en": "Rose Garden of the New Residence"
+      },
+      "summary": {
+        "de": "Historische Gartenanlage auf dem Domberg mit Skulpturen und weitem Blick über Bamberg.",
+        "en": "Historic garden on Cathedral Hill with sculptures and a broad view over Bamberg."
+      },
+      "whyNotable": {
+        "de": "Gartengeschichte, Residenzkultur und Stadtpanorama kommen an einem Ort zusammen.",
+        "en": "Garden history, court culture and a city panorama come together in one place."
+      },
+      "source": {
+        "name": "Bamberg Tourismus",
+        "url": "https://www.bamberg.info/poi/rosengarten-4651",
+        "retrievedAt": "2026-10-08"
+      },
+      "details": {
+        "whyVisit": {
+          "de": "Für einen ruhigen Blick über Dächer und Kirchen der Altstadt.",
+          "en": "For a quiet view across the roofs and churches of the old town."
+        },
+        "keyHighlight": {
+          "de": "Axiale Gartenstruktur, Brunnen, Pavillon und Skulpturen",
+          "en": "Axial garden layout, fountain, pavilion and sculptures"
+        },
+        "significance": {
+          "de": "Historischer Residenzgarten mit barocker und rokokozeitlicher Gestaltung",
+          "en": "Historic residence garden shaped by Baroque and Rococo design"
+        }
+      }
+    },
+    {
+      "id": "BA-SIGHT-05",
+      "city": "bamberg",
+      "topic": "cultural-places",
+      "recordType": "sight",
+      "discoveryCategory": "sights",
+      "order": 8,
+      "verification": "verified",
+      "title": {
+        "de": "Michaelsberg",
+        "en": "Michaelsberg"
+      },
+      "summary": {
+        "de": "Ehemalige Benediktinerabtei mit Terrassengärten auf einem prägenden Bamberger Hügel.",
+        "en": "Former Benedictine abbey with terraced gardens on one of Bamberg's defining hills."
+      },
+      "whyNotable": {
+        "de": "Klostergeschichte, Gartenlandschaft und Ausblicke erklären die geistliche Topografie der Stadt.",
+        "en": "Monastic history, gardens and viewpoints explain the city's religious topography."
+      },
+      "source": {
+        "name": "Bamberg Tourismus",
+        "url": "https://www.bamberg.info/welterbe/michaelsberg",
+        "retrievedAt": "2026-10-08"
+      },
+      "details": {
+        "whyVisit": {
+          "de": "Für einen Spaziergang durch Gärten und zum Verständnis der Bamberger Hügelstadt.",
+          "en": "For a walk through the gardens and an understanding of Bamberg as a city of hills."
+        },
+        "keyHighlight": {
+          "de": "Klosterensemble, Terrassengärten und Himmelsgarten",
+          "en": "Abbey ensemble, terraced gardens and the painted Garden of Heaven"
+        },
+        "significance": {
+          "de": "Wichtiges Zeugnis der Bamberger Kloster- und Stadtgeschichte",
+          "en": "Important witness to Bamberg's monastic and urban history"
+        }
+      }
+    },
+    {
+      "id": "BA-REST-01",
+      "city": "bamberg",
+      "topic": "regional-food",
+      "recordType": "restaurant",
+      "discoveryCategory": "restaurants",
+      "order": 9,
+      "verification": "verified",
+      "title": {
+        "de": "Schlenkerla",
+        "en": "Schlenkerla"
+      },
+      "summary": {
+        "de": "Historischer Rauchbierausschank in der Bamberger Altstadt mit regionaler Brauhausküche.",
+        "en": "Historic smoked-beer tavern in Bamberg's old town with regional brewery cuisine."
+      },
+      "whyNotable": {
+        "de": "Der Ort verbindet Bambergs Rauchbiertradition mit einem belegten lokalen Gericht.",
+        "en": "The venue connects Bamberg's smoked-beer tradition with a documented local dish."
+      },
+      "source": {
+        "name": "Bamberg Tourismus",
+        "url": "https://www.schlenkerla.de/schlenkerla/karte/speisen.html",
+        "retrievedAt": "2026-10-08"
+      },
+      "details": {
+        "cuisine": {
+          "de": "Fränkische Brauhausküche",
+          "en": "Franconian brewery cuisine"
+        },
+        "signatureDish": {
+          "de": "Bamberger Zwiebel in Rauchbiersoße",
+          "en": "Bamberg onion in smoked-beer sauce"
+        },
+        "recommendedOrder": {
+          "de": "Bamberger Zwiebel in Rauchbiersoße",
+          "en": "Bamberg onion in smoked-beer sauce"
+        },
+        "whyOrderIt": {
+          "de": "Das Gericht verbindet Bamberger Gemüsetradition mit dem charakteristischen Rauchbier.",
+          "en": "The dish combines Bamberg's vegetable tradition with its characteristic smoked beer."
+        }
+      }
+    },
+    {
+      "id": "BA-REST-02",
+      "city": "bamberg",
+      "topic": "regional-food",
+      "recordType": "restaurant",
+      "discoveryCategory": "restaurants",
+      "order": 10,
+      "verification": "verified",
+      "title": {
+        "de": "Mahrs Bräu",
+        "en": "Mahrs Bräu"
+      },
+      "summary": {
+        "de": "Bamberger Brauerei und Wirtshaus in der Wunderburg mit fränkischer Küche.",
+        "en": "Bamberg brewery and tavern in the Wunderburg district serving Franconian cuisine."
+      },
+      "whyNotable": {
+        "de": "Brautradition und ein belegtes regionales Hauptgericht lassen sich an einem Ort erleben.",
+        "en": "Brewing tradition and a documented regional main course can be experienced in one place."
+      },
+      "source": {
+        "name": "Bamberg Tourismus",
+        "url": "https://www.mahrs.de/wirtshaus-teaser",
+        "retrievedAt": "2026-10-08"
+      },
+      "details": {
+        "cuisine": {
+          "de": "Fränkische Wirtshausküche",
+          "en": "Franconian tavern cuisine"
+        },
+        "signatureDish": {
+          "de": "Schäuferla",
+          "en": "Franconian roast pork shoulder"
+        },
+        "recommendedOrder": {
+          "de": "Schäuferla",
+          "en": "Franconian roast pork shoulder"
+        },
+        "whyOrderIt": {
+          "de": "Es ist ein regionaltypischer Schweinebraten und ergänzt die Bamberger Brautradition.",
+          "en": "It is a regional roast-pork specialty that complements Bamberg's brewing tradition."
+        }
+      }
+    },
+    {
+      "id": "BA-REST-03",
+      "city": "bamberg",
+      "topic": "regional-food",
+      "recordType": "restaurant",
+      "discoveryCategory": "restaurants",
+      "order": 11,
+      "verification": "verified",
+      "title": {
+        "de": "Fässla",
+        "en": "Fässla"
+      },
+      "summary": {
+        "de": "Traditionelle Bamberger Brauereigaststätte mit fränkischen Gerichten und eigenem Bierausschank.",
+        "en": "Traditional Bamberg brewery tavern with Franconian dishes and its own beer service."
+      },
+      "whyNotable": {
+        "de": "Die Gaststätte verbindet regionale Küche mit gelebter Bamberger Wirtshaus- und Braukultur.",
+        "en": "The tavern combines regional food with Bamberg's living tavern and brewing culture."
+      },
+      "source": {
+        "name": "Bamberg Tourismus",
+        "url": "https://www.faessla.de/faessla-bamberg-gaststaette",
+        "retrievedAt": "2026-10-08"
+      },
+      "details": {
+        "cuisine": {
+          "de": "Fränkische Brauhausküche",
+          "en": "Franconian brewery cuisine"
+        },
+        "signatureDish": {
+          "de": "Schäuferle",
+          "en": "Franconian roast pork shoulder"
+        },
+        "recommendedOrder": {
+          "de": "Schäuferle",
+          "en": "Franconian roast pork shoulder"
+        },
+        "whyOrderIt": {
+          "de": "Das belegte fränkische Gericht passt zur traditionellen Brauereigaststätte.",
+          "en": "The documented Franconian dish fits the traditional brewery-tavern setting."
+        }
+      }
+    },
+    {
+      "id": "BY-SPORT-01",
+      "city": "bayreuth",
+      "topic": "activities-fun",
+      "recordType": "sports-club",
+      "discoveryCategory": "sports",
+      "order": 12,
+      "verification": "verified",
+      "title": {
+        "de": "SpVgg Bayreuth",
+        "en": "SpVgg Bayreuth"
+      },
+      "summary": {
+        "de": "Historisch bedeutender Bayreuther Fußballverein, lokal als „Oldschdod“ bekannt.",
+        "en": "Historically significant Bayreuth football club, locally known as 'Oldschdod'."
+      },
+      "whyNotable": {
+        "de": "Eine belegte Geschichte im deutschen Profifußball erklärt die starke lokale Bekanntheit.",
+        "en": "A documented history in German professional football explains the club's strong local profile."
+      },
+      "source": {
+        "name": "SpVgg Bayreuth",
+        "url": "https://spvgg-bayreuth.de/club/historie",
+        "retrievedAt": "2026-10-08"
+      },
+      "details": {
+        "sport": {
+          "de": "Fußball",
+          "en": "Football"
+        },
+        "achievement": {
+          "de": "Belegte Vergangenheit im deutschen Profifußball",
+          "en": "Documented history in German professional football"
+        },
+        "participationType": "both",
+        "homeVenue": "Hans-Walter-Wild-Stadion"
+      }
+    },
+    {
+      "id": "BY-SPORT-02",
+      "city": "bayreuth",
+      "topic": "activities-fun",
+      "recordType": "sports-club",
+      "discoveryCategory": "sports",
+      "order": 13,
+      "verification": "verified",
+      "title": {
+        "de": "BBC Bayreuth",
+        "en": "BBC Bayreuth"
+      },
+      "summary": {
+        "de": "Bayreuths Profibasketballteam mit Heimspielen in der Oberfrankenhalle.",
+        "en": "Bayreuth's professional basketball team, playing home games at Oberfrankenhalle."
+      },
+      "whyNotable": {
+        "de": "Das Team ist ein klar belegter Anlaufpunkt für Basketballkultur in Bayreuth.",
+        "en": "The team is a clearly documented focal point for basketball culture in Bayreuth."
+      },
+      "source": {
+        "name": "Bayreuth Basketball",
+        "url": "https://www.bayreuth-basketball.de/news/basketball-bundesliga/seite-2",
+        "retrievedAt": "2026-10-08"
+      },
+      "details": {
+        "sport": {
+          "de": "Basketball",
+          "en": "Basketball"
+        },
+        "achievement": null,
+        "participationType": "spectator",
+        "homeVenue": "Oberfrankenhalle"
+      }
+    },
+    {
+      "id": "BY-SPORT-03",
+      "city": "bayreuth",
+      "topic": "activities-fun",
+      "recordType": "sports-club",
+      "discoveryCategory": "sports",
+      "order": 14,
+      "verification": "verified",
+      "title": {
+        "de": "EHC Bayreuth Tigers",
+        "en": "EHC Bayreuth Tigers"
+      },
+      "summary": {
+        "de": "Aktiver Bayreuther Eishockeyverein mit Seniorenmannschaft und Nachwuchsangeboten.",
+        "en": "Active Bayreuth ice hockey club with a senior team and youth programmes."
+      },
+      "whyNotable": {
+        "de": "Der Verein erweitert die lokale Sportauswahl über Fußball und Basketball hinaus.",
+        "en": "The club broadens the local sports landscape beyond football and basketball."
+      },
+      "source": {
+        "name": "EHC Bayreuth",
+        "url": "https://www.ehc-bayreuth.de/news/vorbereitungsspiele-202627",
+        "retrievedAt": "2026-10-08"
+      },
+      "details": {
+        "sport": {
+          "de": "Eishockey",
+          "en": "Ice hockey"
+        },
+        "achievement": null,
+        "participationType": "both",
+        "homeVenue": "Kunsteisstadion Bayreuth"
+      }
+    },
+    {
+      "id": "BY-SIGHT-01",
+      "city": "bayreuth",
+      "topic": "cultural-places",
+      "recordType": "sight",
+      "discoveryCategory": "sights",
+      "order": 15,
+      "verification": "verified",
+      "title": {
+        "de": "Markgräfliches Opernhaus",
+        "en": "Margravial Opera House"
+      },
+      "summary": {
+        "de": "Außergewöhnlich erhaltenes barockes Hoftheater und eigenständiges UNESCO-Welterbe.",
+        "en": "Exceptionally preserved Baroque court theatre and a UNESCO World Heritage Site in its own right."
+      },
+      "whyNotable": {
+        "de": "Der erhaltene Zuschauerraum vermittelt Bayreuths höfische Theaterkultur lange vor Wagner.",
+        "en": "Its preserved auditorium reveals Bayreuth's court-theatre culture long before Wagner."
+      },
+      "source": {
+        "name": "Deutsche UNESCO-Kommission",
+        "url": "https://www.unesco.de/staette/markgraefliches-opernhaus-bayreuth",
+        "retrievedAt": "2026-10-08"
+      },
+      "details": {
+        "whyVisit": {
+          "de": "Um barocke Theaterarchitektur und Bayreuths markgräfliche Epoche zu erleben.",
+          "en": "To experience Baroque theatre architecture and Bayreuth's margravial era."
+        },
+        "keyHighlight": {
+          "de": "Hölzerne Logen und bemalte Leinwände im barocken Zuschauerraum",
+          "en": "Wooden boxes and painted canvases in the Baroque auditorium"
+        },
+        "significance": {
+          "de": "UNESCO-Welterbe und außergewöhnlich erhaltenes Hoftheater",
+          "en": "UNESCO World Heritage Site and exceptionally preserved court theatre"
+        }
+      }
+    },
+    {
+      "id": "BY-SIGHT-02",
+      "city": "bayreuth",
+      "topic": "cultural-places",
+      "recordType": "sight",
+      "discoveryCategory": "sights",
+      "order": 16,
+      "verification": "verified",
+      "title": {
+        "de": "Bayreuther Festspielhaus",
+        "en": "Bayreuth Festival Theatre"
+      },
+      "summary": {
+        "de": "Richard Wagners Musiktheater auf dem Grünen Hügel und Spielort der Bayreuther Festspiele.",
+        "en": "Richard Wagner's music theatre on the Green Hill and home of the Bayreuth Festival."
+      },
+      "whyNotable": {
+        "de": "Das Haus erklärt unmittelbar, warum Bayreuth international mit Wagner verbunden ist.",
+        "en": "The building directly explains why Bayreuth is internationally associated with Wagner."
+      },
+      "source": {
+        "name": "Bayreuth Tourismus",
+        "url": "https://www.bayreuth-tourismus.de/en/the-bayreuth-festival",
+        "retrievedAt": "2026-10-08"
+      },
+      "details": {
+        "whyVisit": {
+          "de": "Für Wagners Theateridee, Aufführungsgeschichte und besondere Klangarchitektur.",
+          "en": "For Wagner's theatre concept, performance history and distinctive acoustic architecture."
+        },
+        "keyHighlight": {
+          "de": "Steil ansteigender Zuschauerraum und verdeckter Orchestergraben",
+          "en": "Steeply rising auditorium and concealed orchestra pit"
+        },
+        "significance": {
+          "de": "Zentraler Ort der Wagner-Rezeption und der Bayreuther Festspiele",
+          "en": "Central site of Wagner reception and the Bayreuth Festival"
+        }
+      }
+    },
+    {
+      "id": "BY-SIGHT-03",
+      "city": "bayreuth",
+      "topic": "cultural-places",
+      "recordType": "sight",
+      "discoveryCategory": "sights",
+      "order": 17,
+      "verification": "verified",
+      "title": {
+        "de": "Eremitage",
+        "en": "Hermitage"
+      },
+      "summary": {
+        "de": "Historische Schloss- und Gartenanlage, geprägt durch Markgräfin Wilhelmine.",
+        "en": "Historic palace and garden ensemble shaped by Margravine Wilhelmine."
+      },
+      "whyNotable": {
+        "de": "Die weitläufige Anlage macht höfische Freizeitkultur in Architektur, Wegen und Wasseranlagen sichtbar.",
+        "en": "The extensive ensemble reveals courtly leisure culture through architecture, paths and water features."
+      },
+      "source": {
+        "name": "Bayreuth Tourismus",
+        "url": "https://www.bayreuth-tourismus.de/sehenswertes/gaerten-und-parks/eremitage",
+        "retrievedAt": "2026-10-08"
+      },
+      "details": {
+        "whyVisit": {
+          "de": "Um Bayreuths höfische Kultur in einer ganzen Parklandschaft zu erleben.",
+          "en": "To experience Bayreuth's court culture across an entire park landscape."
+        },
+        "keyHighlight": {
+          "de": "Altes und Neues Schloss, Grotten, Ruinentheater und Gartenräume",
+          "en": "Old and New Palaces, grottoes, ruined theatre and garden spaces"
+        },
+        "significance": {
+          "de": "Bedeutendes Ensemble der Bayreuther Markgrafenzeit",
+          "en": "Major ensemble from Bayreuth's margravial era"
+        }
+      }
+    },
+    {
+      "id": "BY-SIGHT-04",
+      "city": "bayreuth",
+      "topic": "cultural-places",
+      "recordType": "sight",
+      "discoveryCategory": "sights",
+      "order": 18,
+      "verification": "verified",
+      "title": {
+        "de": "Neues Schloss und Hofgarten",
+        "en": "New Palace and Court Garden"
+      },
+      "summary": {
+        "de": "Bayreuther Residenzensemble mit Rokokoräumen, Sammlungen und gestaltetem Hofgarten.",
+        "en": "Bayreuth residence ensemble with Rococo rooms, collections and a designed court garden."
+      },
+      "whyNotable": {
+        "de": "Schloss und Garten zeigen gemeinsam Bayreuths Entwicklung zum höfischen Kulturzentrum.",
+        "en": "Palace and garden together show Bayreuth's development as a courtly cultural centre."
+      },
+      "source": {
+        "name": "Bayreuth Tourismus",
+        "url": "https://www.bayreuth-tourismus.de/sehenswertes/wilhelmine/neues-schloss-mit-hofgarten",
+        "retrievedAt": "2026-10-08"
+      },
+      "details": {
+        "whyVisit": {
+          "de": "Für das Zusammenspiel von historischen Innenräumen und gestaltetem Stadtraum.",
+          "en": "For the interplay of historic interiors and designed urban landscape."
+        },
+        "keyHighlight": {
+          "de": "Bayreuther Rokokoräume und Hofgarten mit Kanal und Alleen",
+          "en": "Bayreuth Rococo rooms and court garden with canal and avenues"
+        },
+        "significance": {
+          "de": "Residenz der Markgrafenzeit und wichtiger Ort im Wirken Wilhelmines",
+          "en": "Margravial residence and important site in Wilhelmine's cultural legacy"
+        }
+      }
+    },
+    {
+      "id": "BY-SIGHT-05",
+      "city": "bayreuth",
+      "topic": "cultural-places",
+      "recordType": "sight",
+      "discoveryCategory": "sights",
+      "order": 19,
+      "verification": "verified",
+      "title": {
+        "de": "Haus Wahnfried und Richard Wagner Museum",
+        "en": "Wahnfried House and Richard Wagner Museum"
+      },
+      "summary": {
+        "de": "Richard Wagners ehemaliges Wohnhaus mit Museum zu Leben, Werk und Wirkung.",
+        "en": "Richard Wagner's former home, now a museum exploring his life, work and legacy."
+      },
+      "whyNotable": {
+        "de": "Der authentische Wohnort ergänzt das Festspielhaus um Biografie und historische Zusammenhänge.",
+        "en": "The composer's home complements the Festival Theatre with biography and historical context."
+      },
+      "source": {
+        "name": "Richard Wagner Museum",
+        "url": "https://www.wagnermuseum.de/en/museum/permanent-exhibition",
+        "retrievedAt": "2026-10-08"
+      },
+      "details": {
+        "whyVisit": {
+          "de": "Um Wagners Bayreuther Leben und die Wirkungsgeschichte seines Werks zu verstehen.",
+          "en": "To understand Wagner's life in Bayreuth and the later impact of his work."
+        },
+        "keyHighlight": {
+          "de": "Haus Wahnfried, Dauerausstellungen und Wagners Grab im Garten",
+          "en": "Wahnfried House, permanent exhibitions and Wagner's grave in the garden"
+        },
+        "significance": {
+          "de": "Zentraler Erinnerungs- und Forschungsort zur Wagner-Geschichte",
+          "en": "Central memorial and research site for Wagner history"
+        }
+      }
+    },
+    {
+      "id": "BY-REST-01",
+      "city": "bayreuth",
+      "topic": "regional-food",
+      "recordType": "restaurant",
+      "discoveryCategory": "restaurants",
+      "order": 20,
+      "verification": "verified",
+      "title": {
+        "de": "Oskar – Das Wirtshaus am Markt",
+        "en": "Oskar – Das Wirtshaus am Markt"
+      },
+      "summary": {
+        "de": "Zentral gelegenes Bayreuther Wirtshaus mit regionaler Küche und lokaler Bratwurstspezialität.",
+        "en": "Centrally located Bayreuth tavern serving regional cuisine and a local bratwurst specialty."
+      },
+      "whyNotable": {
+        "de": "Ein konkretes Bayreuther Bratwurstgericht ist durch die eigene Speisenseite belegt.",
+        "en": "A specific Bayreuth bratwurst dish is documented by the restaurant's own menu page."
+      },
+      "source": {
+        "name": "Bayreuth Tourismus",
+        "url": "https://oskar-bayreuth.de/speisen-getranke",
+        "retrievedAt": "2026-10-08"
+      },
+      "details": {
+        "cuisine": {
+          "de": "Fränkische Wirtshausküche",
+          "en": "Franconian tavern cuisine"
+        },
+        "signatureDish": {
+          "de": "Drei Bayreuther Bratwürste vom Grill",
+          "en": "Three grilled Bayreuth bratwursts"
+        },
+        "recommendedOrder": {
+          "de": "Drei Bayreuther Bratwürste vom Grill",
+          "en": "Three grilled Bayreuth bratwursts"
+        },
+        "whyOrderIt": {
+          "de": "Das Gericht steht für eine dokumentierte lokale Spezialität Bayreuths.",
+          "en": "The dish represents a documented local specialty of Bayreuth."
+        }
+      }
+    },
+    {
+      "id": "BY-REST-02",
+      "city": "bayreuth",
+      "topic": "regional-food",
+      "recordType": "restaurant",
+      "discoveryCategory": "restaurants",
+      "order": 21,
+      "verification": "verified",
+      "title": {
+        "de": "Restaurant Eule",
+        "en": "Restaurant Eule"
+      },
+      "summary": {
+        "de": "Bayreuther Restaurant für fränkische Küche, verbunden mit Geschichten über Richard Wagner.",
+        "en": "Bayreuth restaurant for Franconian cuisine, associated with stories about Richard Wagner."
+      },
+      "whyNotable": {
+        "de": "Die Adresse verbindet regionale Küche mit Bayreuths Wagner-Erzählungen, ohne Anekdoten als Fakten auszugeben.",
+        "en": "The venue links regional food with Bayreuth's Wagner stories without presenting anecdotes as fact."
+      },
+      "source": {
+        "name": "Bayreuth Tourismus",
+        "url": "https://www.eule-bayreuth.de/speisenkarte",
+        "retrievedAt": "2026-10-08"
+      },
+      "details": {
+        "cuisine": {
+          "de": "Fränkische Küche",
+          "en": "Franconian cuisine"
+        },
+        "signatureDish": {
+          "de": "Fränkischer Sauerbraten",
+          "en": "Franconian sauerbraten"
+        },
+        "recommendedOrder": {
+          "de": "Fränkischer Sauerbraten",
+          "en": "Franconian sauerbraten"
+        },
+        "whyOrderIt": {
+          "de": "Das regionale Gericht ist auf der offiziellen Speisekarte dokumentiert.",
+          "en": "This regional dish is documented on the official menu."
+        }
+      }
+    },
+    {
+      "id": "BY-REST-04",
+      "city": "bayreuth",
+      "topic": "regional-food",
+      "recordType": "restaurant",
+      "discoveryCategory": "restaurants",
+      "order": 22,
+      "verification": "verified",
+      "title": {
+        "de": "Restaurant Lohmühle",
+        "en": "Restaurant Lohmühle"
+      },
+      "summary": {
+        "de": "Bayreuther Restaurant mit deutlichem Schwerpunkt auf fränkischer und oberfränkischer Küche.",
+        "en": "Bayreuth restaurant with a clear focus on Franconian and Upper Franconian cuisine."
+      },
+      "whyNotable": {
+        "de": "Das Haus nennt selbst ein klassisches oberfränkisches Gericht als Empfehlung.",
+        "en": "The restaurant itself recommends a classic Upper Franconian dish."
+      },
+      "source": {
+        "name": "Bayreuth Tourismus",
+        "url": "https://hotel-lohmuehle.de/restaurant/speisekarten",
+        "retrievedAt": "2026-10-08"
+      },
+      "details": {
+        "cuisine": {
+          "de": "Fränkische und oberfränkische Küche",
+          "en": "Franconian and Upper Franconian cuisine"
+        },
+        "signatureDish": {
+          "de": "Schäuferlä mit Klößen",
+          "en": "Franconian roast pork shoulder with dumplings"
+        },
+        "recommendedOrder": {
+          "de": "Schäuferlä mit Klößen",
+          "en": "Franconian roast pork shoulder with dumplings"
+        },
+        "whyOrderIt": {
+          "de": "Das Gericht ist eine ausdrücklich empfohlene klassische Spezialität der Region.",
+          "en": "The dish is an explicitly recommended classic specialty of the region."
+        }
+      }
+    }
+  ]
+}

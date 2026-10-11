@@ -1,0 +1,262 @@
+[
+  {
+    "id": "Q01",
+    "language": "de",
+    "city": "bamberg",
+    "topic": "activities-fun",
+    "question": "Welcher Spazierweg verbindet Bambergs historische Klosterlandschaft?",
+    "expected_ids": [
+      "BA-ACT-01"
+    ]
+  },
+  {
+    "id": "Q02",
+    "language": "en",
+    "city": "bamberg",
+    "topic": "activities-fun",
+    "question": "Which walking trail links Bamberg's historic monasteries?",
+    "expected_ids": [
+      "BA-ACT-01"
+    ]
+  },
+  {
+    "id": "Q03",
+    "language": "de",
+    "city": "bamberg",
+    "topic": "cultural-places",
+    "question": "Was macht die Lage und die Fassaden des Alten Rathauses in Bamberg besonders?",
+    "expected_ids": [
+      "BA-SIGHT-02"
+    ]
+  },
+  {
+    "id": "Q04",
+    "language": "en",
+    "city": "bamberg",
+    "topic": "cultural-places",
+    "question": "What makes Bamberg's Old Town Hall on the Regnitz distinctive?",
+    "expected_ids": [
+      "BA-SIGHT-02"
+    ]
+  },
+  {
+    "id": "Q05",
+    "language": "de",
+    "city": "bamberg",
+    "topic": "local-history",
+    "question": "Wann und von wem wurde das Bistum Bamberg gegründet?",
+    "expected_ids": [
+      "BA-HIST-01"
+    ]
+  },
+  {
+    "id": "Q06",
+    "language": "en",
+    "city": "bamberg",
+    "topic": "local-history",
+    "question": "When and by whom was the diocese of Bamberg founded?",
+    "expected_ids": [
+      "BA-HIST-01"
+    ]
+  },
+  {
+    "id": "Q07",
+    "language": "de",
+    "city": "bamberg",
+    "topic": "local-traditions",
+    "question": "Was ist die Sandkerwa in Bamberg?",
+    "expected_ids": [
+      "BA-TRAD-03"
+    ]
+  },
+  {
+    "id": "Q08",
+    "language": "en",
+    "city": "bamberg",
+    "topic": "local-traditions",
+    "question": "What is Bamberg's Sandkerwa festival?",
+    "expected_ids": [
+      "BA-TRAD-03"
+    ]
+  },
+  {
+    "id": "Q09",
+    "language": "de",
+    "city": "bamberg",
+    "topic": "newcomer-essentials",
+    "question": "Wie melde ich meinen Wohnsitz in Bamberg an?",
+    "expected_ids": [
+      "BA-NEW-01"
+    ]
+  },
+  {
+    "id": "Q10",
+    "language": "en",
+    "city": "bamberg",
+    "topic": "newcomer-essentials",
+    "question": "How do I register my residence in Bamberg?",
+    "expected_ids": [
+      "BA-NEW-01"
+    ]
+  },
+  {
+    "id": "Q11",
+    "language": "de",
+    "city": "bamberg",
+    "topic": "regional-food",
+    "question": "Was sind Bamberger Hörnla?",
+    "expected_ids": [
+      "BA-FOOD-01"
+    ]
+  },
+  {
+    "id": "Q12",
+    "language": "en",
+    "city": "bamberg",
+    "topic": "regional-food",
+    "question": "What are Bamberger Hörnla pastries?",
+    "expected_ids": [
+      "BA-FOOD-01"
+    ]
+  },
+  {
+    "id": "Q13",
+    "language": "de",
+    "city": "bayreuth",
+    "topic": "activities-fun",
+    "question": "Wie kann ich beim Glashaus auf dem Bayreuther Campus mitmachen?",
+    "expected_ids": [
+      "BT-ACT-GLASHAUS"
+    ]
+  },
+  {
+    "id": "Q14",
+    "language": "en",
+    "city": "bayreuth",
+    "topic": "activities-fun",
+    "question": "How can I get involved at Glashaus on Bayreuth's campus?",
+    "expected_ids": [
+      "BT-ACT-GLASHAUS"
+    ]
+  },
+  {
+    "id": "Q15",
+    "language": "de",
+    "city": "bayreuth",
+    "topic": "cultural-places",
+    "question": "Was macht das Markgräfliche Opernhaus in Bayreuth besonders?",
+    "expected_ids": [
+      "BY-SIGHT-01"
+    ]
+  },
+  {
+    "id": "Q16",
+    "language": "en",
+    "city": "bayreuth",
+    "topic": "cultural-places",
+    "question": "What makes the Margravial Opera House in Bayreuth special?",
+    "expected_ids": [
+      "BY-SIGHT-01"
+    ]
+  },
+  {
+    "id": "Q17",
+    "language": "de",
+    "city": "bayreuth",
+    "topic": "local-history",
+    "question": "Welche Rolle spielte Wilhelmine in Bayreuths Geschichte?",
+    "expected_ids": [
+      "BY-HIST-03"
+    ]
+  },
+  {
+    "id": "Q18",
+    "language": "en",
+    "city": "bayreuth",
+    "topic": "local-history",
+    "question": "What role did Wilhelmine play in Bayreuth's history?",
+    "expected_ids": [
+      "BY-HIST-03"
+    ]
+  },
+  {
+    "id": "Q19",
+    "language": "de",
+    "city": "bayreuth",
+    "topic": "local-traditions",
+    "question": "Was sind die Richard-Wagner-Festspiele in Bayreuth?",
+    "expected_ids": [
+      "BY-TRAD-01"
+    ]
+  },
+  {
+    "id": "Q20",
+    "language": "en",
+    "city": "bayreuth",
+    "topic": "local-traditions",
+    "question": "What are Bayreuth's Richard Wagner Festival traditions?",
+    "expected_ids": [
+      "BY-TRAD-01"
+    ]
+  },
+  {
+    "id": "Q21",
+    "language": "de",
+    "city": "bayreuth",
+    "topic": "newcomer-essentials",
+    "question": "Wie melde ich meinen Wohnsitz in Bayreuth an?",
+    "expected_ids": [
+      "BY-NEW-01"
+    ]
+  },
+  {
+    "id": "Q22",
+    "language": "en",
+    "city": "bayreuth",
+    "topic": "newcomer-essentials",
+    "question": "How do I register my residence in Bayreuth?",
+    "expected_ids": [
+      "BY-NEW-01"
+    ]
+  },
+  {
+    "id": "Q23",
+    "language": "de",
+    "city": "bayreuth",
+    "topic": "regional-food",
+    "question": "Was sind Bayreuther Knieküchle und ausgezogene Krapfen?",
+    "expected_ids": [
+      "BT-FOOD-002"
+    ]
+  },
+  {
+    "id": "Q24",
+    "language": "en",
+    "city": "bayreuth",
+    "topic": "regional-food",
+    "question": "What are Bayreuth Knieküchle and pulled doughnuts?",
+    "expected_ids": [
+      "BT-FOOD-002"
+    ]
+  },
+  {
+    "id": "Q25",
+    "language": "de",
+    "city": "oberfranken",
+    "topic": "regional-food",
+    "question": "Was sind Blaue Zipfel in der fränkischen Küche?",
+    "expected_ids": [
+      "OF-FOOD-008"
+    ]
+  },
+  {
+    "id": "Q26",
+    "language": "en",
+    "city": "oberfranken",
+    "topic": "regional-food",
+    "question": "What are Blaue Zipfel in Franconian cuisine?",
+    "expected_ids": [
+      "OF-FOOD-008"
+    ]
+  }
+]

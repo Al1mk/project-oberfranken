@@ -1,0 +1,39 @@
+{
+  "schema_version": 1,
+  "kb_version": "2026-10-11-v3.2",
+  "kb_digest": "a105a993b7e631da5d9df16675d0b0f6ba882be5d1c8d928096135249fb07114",
+  "record_count": 251,
+  "city_counts": {
+    "bamberg": 121,
+    "bayreuth": 118,
+    "oberfranken": 12
+  },
+  "status_counts": {
+    "verified": 56,
+    "source_backed": 187,
+    "limited": 8
+  },
+  "display_count": 24,
+  "copied": {
+    "Oberfranken_Knowledge_Base_Merged_v3.2.md": {
+      "sha256": "a105a993b7e631da5d9df16675d0b0f6ba882be5d1c8d928096135249fb07114",
+      "bytes": 439199
+    },
+    "Oberfranken_Knowledge_Base_Merged_v3.2.jsonl": {
+      "sha256": "9167f2dfc11d2cb262f57666894b6ca021a8b5483c515d004f4165f90ff3a7d6",
+      "bytes": 837646
+    },
+    "catalog.json": {
+      "sha256": "bfd8be83b458bef54eab6f8ee23acc782b1f7d96ddff3324f406c928e388e59f",
+      "bytes": 33328
+    },
+    "page-catalog.json": {
+      "sha256": "28029ecc0e4df8d6223447a7a4568409f697b1acf372c3201f2ac33a54c76f9b",
+      "bytes": 15265
+    },
+    "Pilot_Content_QA_v3.2.md": {
+      "sha256": "b24fe69c50d18bc2f4ef3d354ae03dbe4f14a72fe411795e0da2f131cbe7fe86",
+      "bytes": 516
+    }
+  }
+}

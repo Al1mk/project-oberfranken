@@ -1,0 +1,313 @@
+{
+  "schemaVersion": 1,
+  "kbVersion": "2026-10-11-v3.2",
+  "kbDigest": "a105a993b7e631da5d9df16675d0b0f6ba882be5d1c8d928096135249fb07114",
+  "records": [
+    {
+      "id": "BA-ACT-01",
+      "city": "bamberg",
+      "category": "activities-participation",
+      "title": {
+        "de": "Bamberg auf dem Benediktinerweg entdecken",
+        "en": "Explore Bamberg on the Benedictine Trail"
+      },
+      "summary": {
+        "de": "Der Benediktinerweg verbindet Orte der Bamberger Klosterlandschaft. Prüfe die offizielle Beschreibung für den aktuellen Weg und Zugang.",
+        "en": "The Benedictine Trail connects places in Bamberg's monastic landscape. Check the official description for the current route and access."
+      },
+      "sourceName": "Bamberg Tourismus",
+      "sourceUrl": "https://www.bamberg.info/poi/benediktinerweg-4654",
+      "retrievedAt": "2026-10-08",
+      "status": "verified"
+    },
+    {
+      "id": "BA-ACT-ENGLISH-DRAMA",
+      "city": "bamberg",
+      "category": "activities-participation",
+      "title": {
+        "de": "Theater auf Englisch: BUEDG",
+        "en": "English theatre: BUEDG"
+      },
+      "summary": {
+        "de": "Die Bamberg University English Drama Group spielt auf Englisch. Mitwirkung ist in Schauspiel, Regie, Technik, Kostümen und Bühnenbild möglich. Prüfe die aktuellen Teilnahmeinformationen.",
+        "en": "The Bamberg University English Drama Group performs in English. Roles include acting, directing, technical work, costumes and stage design. Check current participation information."
+      },
+      "sourceName": "Universität Bamberg",
+      "sourceUrl": "https://www.uni-bamberg.de/sz/studium/kursunabhaengige-angebote/theatergruppen",
+      "retrievedAt": "2026-10-07",
+      "status": "limited"
+    },
+    {
+      "id": "BA-ACT-THEATRE-INTERNATIONAL",
+      "city": "bamberg",
+      "category": "activities-participation",
+      "title": {
+        "de": "Theater International",
+        "en": "Theater International"
+      },
+      "summary": {
+        "de": "Theater International verbindet deutschsprachiges Theater, Sprachpraxis und Kreativität, vor allem für internationale Studierende. Auch deutsche Muttersprachler sind willkommen.",
+        "en": "Theater International combines German-language theatre, language practice and creativity, mainly for international students. Native German speakers are also welcome."
+      },
+      "sourceName": "Universität Bamberg",
+      "sourceUrl": "https://www.uni-bamberg.de/sz/studium/kursunabhaengige-angebote/theatergruppen",
+      "retrievedAt": "2026-10-07",
+      "status": "limited"
+    },
+    {
+      "id": "BA-HIST-02",
+      "city": "bamberg",
+      "category": "culture-tradition",
+      "title": {
+        "de": "Bambergs Welterbe verstehen",
+        "en": "Understand Bamberg's World Heritage"
+      },
+      "summary": {
+        "de": "Bamberg gehört seit 1993 zum UNESCO-Welterbe. Zum historischen Stadtgefüge gehören Bergstadt, Inselstadt und Gärtnerstadt; das Welterbe ist nicht nur ein einzelnes Gebäude.",
+        "en": "Bamberg has been a UNESCO World Heritage Site since 1993. Its historic urban structure includes the hill, island and market-garden areas, not just one building."
+      },
+      "sourceName": "UNESCO World Heritage Centre",
+      "sourceUrl": "https://whc.unesco.org/en/list/624",
+      "retrievedAt": "2026-10-08",
+      "status": "verified"
+    },
+    {
+      "id": "BA-TRAD-03",
+      "city": "bamberg",
+      "category": "culture-tradition",
+      "title": {
+        "de": "Die Sandkerwa",
+        "en": "The Sandkerwa festival"
+      },
+      "summary": {
+        "de": "Die Sandkerwa verbindet Kirchweih und Nachbarschaft rund um die Sandstraße mit Musik, Essen und Vereinen. Das aktuelle Programm steht beim Veranstalter.",
+        "en": "Sandkerwa combines a church fair and neighbourhood life around Sandstraße, with music, food and local associations. Check the organiser for the current programme."
+      },
+      "sourceName": "Bamberger Sandkerwa",
+      "sourceUrl": "https://www.sandkerwa.de/",
+      "retrievedAt": "2026-10-08",
+      "status": "verified"
+    },
+    {
+      "id": "BA-NEW-01",
+      "city": "bamberg",
+      "category": "official-newcomer-information",
+      "title": {
+        "de": "Wohnsitz anmelden: Stadt Bamberg",
+        "en": "Register your address: City of Bamberg"
+      },
+      "summary": {
+        "de": "Der städtische Service führt zur zuständigen Stelle und zu Informationen über Unterlagen und Verfahren. Prüfe die aktuelle Anleitung; dies ist keine persönliche Rechtsberatung.",
+        "en": "The city service identifies the responsible office and gives information about documents and the procedure. Check the current instructions; this is not personal legal advice."
+      },
+      "sourceName": "Stadt Bamberg",
+      "sourceUrl": "https://www.stadt.bamberg.de/B%C3%BCrgerservice/Rathaus-Service/Dienstleistungen/Wohnsitz-Anmeldung.php?FID=329.847.1&ModID=10",
+      "retrievedAt": "2026-10-08",
+      "status": "verified"
+    },
+    {
+      "id": "BA-NEW-02",
+      "city": "bamberg",
+      "category": "official-newcomer-information",
+      "title": {
+        "de": "Orientierung an der Universität Bamberg",
+        "en": "Orientation at the University of Bamberg"
+      },
+      "summary": {
+        "de": "Die Universität bietet Erstsemesterorientierung und Informationen für internationale Studierende. Angebote hängen vom Studierendenstatus und Semester ab; prüfe die offiziellen Seiten.",
+        "en": "The university offers first-semester orientation and information for international students. Services depend on student status and semester; check the official pages."
+      },
+      "sourceName": "Universität Bamberg",
+      "sourceUrl": "https://www.uni-bamberg.de/en/studies/currently-enrolled/new-students/eet",
+      "retrievedAt": "2026-10-08",
+      "status": "verified"
+    },
+    {
+      "id": "BA-NEW-STUDY-CHECKLIST",
+      "city": "bamberg",
+      "category": "official-newcomer-information",
+      "title": {
+        "de": "Checkliste für den Studienstart",
+        "en": "Checklist for starting your studies"
+      },
+      "summary": {
+        "de": "Die universitäre Checkliste hilft beim Studienstart mit Konto, Studienorganisation und Alltag. Einige Punkte sind fakultätsspezifisch; prüfe die Hinweise für deinen Studiengang.",
+        "en": "The university checklist helps with starting studies, account setup, study organisation and daily life. Some points are faculty-specific; check the guidance for your programme."
+      },
+      "sourceName": "Universität Bamberg",
+      "sourceUrl": "https://www.uni-bamberg.de/en/studies/currently-enrolled/new-students/eet/checklist",
+      "retrievedAt": "2026-10-07",
+      "status": "limited"
+    },
+    {
+      "id": "BA-FOOD-02",
+      "city": "bamberg",
+      "category": "culture-tradition",
+      "title": {
+        "de": "Bamberger Rauchbierkultur",
+        "en": "Bamberg's smoked-beer culture"
+      },
+      "summary": {
+        "de": "Rauchbier ist eine Biersorte, keine Speise. Rauchmalz über Holzfeuer gibt ihm seinen Geschmack. Es ist ein Einstieg in Bambergs Brauereikultur; das aktuelle Angebot einer Brauerei kann sich ändern.",
+        "en": "Rauchbier is a beer style, not a dish. Malt smoked over a wood fire gives it its taste. It introduces Bamberg's brewery culture; a brewery's current selection can change."
+      },
+      "sourceName": "Bamberg Tourismus",
+      "sourceUrl": "https://en.bamberg.info/rauchbier",
+      "retrievedAt": "2026-10-08",
+      "status": "verified"
+    },
+    {
+      "id": "BT-ACT-CULTURE-CAMPUS",
+      "city": "bayreuth",
+      "category": "activities-participation",
+      "title": {
+        "de": "Kultur auf dem Campus",
+        "en": "Culture on campus"
+      },
+      "summary": {
+        "de": "Auf dem Campus gibt es Chor-, Band- und Orchesterangebote sowie Kino und Theater. Aktuelle Programme und Möglichkeiten zur Teilnahme stehen auf den Universitätsseiten.",
+        "en": "Campus cultural activities include choirs, bands, orchestras, cinema and theatre. Current programmes and participation information are on the university pages."
+      },
+      "sourceName": "Universität Bayreuth",
+      "sourceUrl": "https://www.uni-bayreuth.de/en/culture-on-campus",
+      "retrievedAt": "2026-10-07",
+      "status": "limited"
+    },
+    {
+      "id": "BT-ACT-DEDICATED-STUDENTS",
+      "city": "bayreuth",
+      "category": "activities-participation",
+      "title": {
+        "de": "Studentische Initiativen kennenlernen",
+        "en": "Explore student initiatives"
+      },
+      "summary": {
+        "de": "Studierendenparlament und Fachschaften vertreten und beraten Studierende. Hochschulinitiativen bieten unter anderem Kultur, Medien, soziales Engagement und Nachhaltigkeit.",
+        "en": "The student parliament and faculty student councils represent and advise students. University initiatives include culture, media, social engagement and sustainability."
+      },
+      "sourceName": "Universität Bayreuth",
+      "sourceUrl": "https://www.uni-bayreuth.de/en/dedicated-students",
+      "retrievedAt": "2026-10-07",
+      "status": "limited"
+    },
+    {
+      "id": "BY-ACT-01",
+      "city": "bayreuth",
+      "category": "activities-participation",
+      "title": {
+        "de": "Spaziergang im Hofgarten",
+        "en": "Walk in the Hofgarten"
+      },
+      "summary": {
+        "de": "Der historische Garten beim Neuen Schloss verbindet einen Spaziergang mit Bayreuths Residenzgeschichte. Prüfe die aktuelle Zugänglichkeit an der offiziellen Quelle.",
+        "en": "The historic garden beside the New Palace combines a walk with Bayreuth's residential history. Check current access with the official source."
+      },
+      "sourceName": "Bayreuth Tourismus",
+      "sourceUrl": "https://www.bayreuth-tourismus.de/sehenswertes/wilhelmine/neues-schloss-mit-hofgarten",
+      "retrievedAt": "2026-10-08",
+      "status": "verified"
+    },
+    {
+      "id": "BY-SIGHT-01",
+      "city": "bayreuth",
+      "category": "culture-tradition",
+      "title": {
+        "de": "Das Markgräfliche Opernhaus",
+        "en": "The Margravial Opera House"
+      },
+      "summary": {
+        "de": "Das barocke Hoftheater gehört seit 2012 zum UNESCO-Welterbe und bewahrt seinen historischen Zuschauerraum. Es ist ein anderes Gebäude als das Wagner-Festspielhaus.",
+        "en": "This Baroque court theatre has been a UNESCO World Heritage Site since 2012 and preserves its historic auditorium. It is a different building from Wagner's Festival Theatre."
+      },
+      "sourceName": "Deutsche UNESCO-Kommission",
+      "sourceUrl": "https://www.unesco.de/staette/markgraefliches-opernhaus-bayreuth",
+      "retrievedAt": "2026-10-08",
+      "status": "verified"
+    },
+    {
+      "id": "BY-HIST-03",
+      "city": "bayreuth",
+      "category": "culture-tradition",
+      "title": {
+        "de": "Wilhelmines Bayreuth",
+        "en": "Wilhelmine's Bayreuth"
+      },
+      "summary": {
+        "de": "Wilhelmine prägte im 18. Jahrhundert Bayreuths Kunst und Architektur. Schlösser, Gärten und Oper gehören zu dieser Barockgeschichte, die vor der Wagner-Tradition liegt.",
+        "en": "Wilhelmine shaped Bayreuth's art and architecture in the eighteenth century. Palaces, gardens and opera are part of this Baroque history, which predates the Wagner tradition."
+      },
+      "sourceName": "Bayreuth Tourismus",
+      "sourceUrl": "https://www.bayreuth-tourismus.de/en/places-of-interest/stage-set-for-margravine-wilhelmine/margravine-wilhelmine",
+      "retrievedAt": "2026-10-08",
+      "status": "verified"
+    },
+    {
+      "id": "BY-TRAD-01",
+      "city": "bayreuth",
+      "category": "culture-tradition",
+      "title": {
+        "de": "Die Wagner-Festspieltradition",
+        "en": "The Wagner festival tradition"
+      },
+      "summary": {
+        "de": "Die seit 1876 bestehende Festspieltradition ist mit Richard Wagner und dem Grünen Hügel verbunden. Das Festspielhaus ist nicht das Markgräfliche Opernhaus. Programme und Tickets bitte beim Veranstalter prüfen.",
+        "en": "The festival tradition, established in 1876, is associated with Richard Wagner and the Green Hill. The Festival Theatre is not the Margravial Opera House. Check programmes and tickets with the organiser."
+      },
+      "sourceName": "Bayreuth Tourismus",
+      "sourceUrl": "https://www.bayreuth-tourismus.de/en/the-bayreuth-festival",
+      "retrievedAt": "2026-10-08",
+      "status": "verified"
+    },
+    {
+      "id": "BT-NEW-BUDDY",
+      "city": "bayreuth",
+      "category": "official-newcomer-information",
+      "title": {
+        "de": "Buddy-Programm",
+        "en": "Buddy programme"
+      },
+      "summary": {
+        "de": "Erfahrene Studierende unterstützen internationale Neuankömmlinge beim Studium und im Alltag. Prüfe aktuelle Teilnahmebedingungen beim Welcome-Angebot.",
+        "en": "Experienced students help international newcomers with studies and daily life. Check current participation conditions with the welcome service."
+      },
+      "sourceName": "Universität Bayreuth International Office",
+      "sourceUrl": "https://www.international-office.uni-bayreuth.de/en/come-to-bayreuth/welcome-services/International-Students/index.html",
+      "retrievedAt": "2026-10-07",
+      "status": "limited"
+    },
+    {
+      "id": "BY-NEW-01",
+      "city": "bayreuth",
+      "category": "official-newcomer-information",
+      "title": {
+        "de": "Wohnsitz anmelden: Stadt Bayreuth",
+        "en": "Register your address: City of Bayreuth"
+      },
+      "summary": {
+        "de": "Das Einwohner- und Wahlamt ist der städtische Ansprechpartner für die Wohnsitzanmeldung. Prüfe das aktuelle Verfahren und die Unterlagen; dies ist keine persönliche Rechtsberatung.",
+        "en": "The residents and electoral office is the city contact for address registration. Check the current procedure and documents; this is not personal legal advice."
+      },
+      "sourceName": "Stadt Bayreuth",
+      "sourceUrl": "https://www.bayreuth.de/rathaus-buergerservice/stadtverwaltung/referate-aemter/aemter-a-z/einwohner-und-wahlamt",
+      "retrievedAt": "2026-10-08",
+      "status": "verified"
+    },
+    {
+      "id": "BY-NEW-02",
+      "city": "bayreuth",
+      "category": "official-newcomer-information",
+      "title": {
+        "de": "International Office: erste Schritte",
+        "en": "International Office: first steps"
+      },
+      "summary": {
+        "de": "Die Welcome-Informationen helfen internationalen Studierenden bei der Ankunft. Angebote hängen vom Status und Semester ab. Persönliche Fragen bitte mit der zuständigen Stelle klären.",
+        "en": "Welcome information helps international students on arrival. Services depend on status and semester. Ask the responsible office about personal circumstances."
+      },
+      "sourceName": "Universität Bayreuth International Office",
+      "sourceUrl": "https://www.international-office.uni-bayreuth.de/en/come-to-bayreuth/welcome-services/International-Students/index.html",
+      "retrievedAt": "2026-10-08",
+      "status": "verified"
+    }
+  ]
+}

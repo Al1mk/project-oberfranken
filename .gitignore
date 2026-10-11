@@ -1,0 +1,75 @@
+# Share project code and runtime data; keep personal documentation out of Git.
+# This does not remove files already tracked by Git or facts embedded in source/tests.
+
+# Private project documentation, AI instructions, learning notes and exports.
+*.[mM][dD]
+*.[mM][dD][xX]
+*.markdown
+*.mdc
+*.pdf
+*.docx
+*.pptx
+*.xlsx
+*.zip
+*.tar
+*.tar.gz
+*.7z
+**/.claude/
+**/.codex/
+**/.agents/
+**/.obsidian/
+**/.playwright-mcp/
+/docs/
+/Logs/
+/Assets/
+/vault/
+/Obsidian/
+/Handoffs/
+/migration/
+# Allow only the machine-readable release inputs; keep Markdown/QA notes private.
+/data/*
+!/data/v3.1/
+!/data/v3.2/
+/data/v3.1/*
+/data/v3.2/*
+!/data/v3.1/Oberfranken_Knowledge_Base_Merged_v3.1.jsonl
+!/data/v3.1/catalog.json
+!/data/v3.1/manifest.json
+!/data/v3.2/Oberfranken_Knowledge_Base_Merged_v3.2.jsonl
+!/data/v3.2/catalog.json
+!/data/v3.2/page-catalog.json
+!/data/v3.2/manifest.json
+
+# Generated environments, caches and builds. Keep package-lock.json and uv.lock.
+**/node_modules/
+**/.venv/
+**/venv/
+**/__pycache__/
+**/.pytest_cache/
+**/.ruff_cache/
+**/.mypy_cache/
+**/.vitest/
+**/*.egg-info/
+**/dist/
+**/build/
+**/coverage/
+*.py[cod]
+*.tsbuildinfo
+*.log
+
+# Local Chroma indexes, model downloads, budget ledger and diagnostic reports.
+/backend/storage*/
+/backend/model_cache/
+/backend/model-cache/
+/backend/reports/
+/backend/evaluation/runs/
+
+# Local credentials/configuration. Only the sanitized examples are shareable.
+**/.env
+**/.env.*
+!**/.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+.DS_Store
