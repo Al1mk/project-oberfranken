@@ -73,3 +73,6 @@
 *.p12
 *.pfx
 .DS_Store
+
+# Public project entry point; other Markdown remains private.
+!/README.md
