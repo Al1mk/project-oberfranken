@@ -51,8 +51,15 @@ City context normally comes from the current page or an explicit city in the que
 
 E5 retrieves information; DeepSeek writes answers. They are different models with different jobs. The project uses pretrained models, with no training or fine-tuning. Laya is not part of this runtime.
 
+Diagrams are included as static images for reliable viewing. Expand the Mermaid source below each image to edit or regenerate it. Open an image at full size to reuse it in a presentation.
+
+![Local RAG architecture with the browser, FastAPI, E5, Chroma and hosted generation](readme-assets/architecture.png)
+
+<details>
+<summary>Editable Mermaid source</summary>
+
 ```mermaid
-flowchart LR
+flowchart TB
     accTitle: Local and hosted RAG architecture
     accDescr: The browser uses FastAPI for chat. Local E5 and Chroma retrieve evidence, while qualified generation uses OpenRouter and DeepInfra. Generated catalogs supply the city pages independently.
     subgraph local_runtime ["Local runtime"]
@@ -79,12 +86,21 @@ flowchart LR
     chat_api -->|Text and Sources| browser_ui
 ```
 
+</details>
+
+---
+
 ### Data preparation
 
 The active release contains **251 parent records and 253 vectors**. Two long records require multiple lossless chunks. The pinned `intfloat/multilingual-e5-small` model produces normalized 384-dimensional vectors. Chunk inputs respect a 512-token limit. Records and queries use the `passage: ` and `query: ` prefixes respectively.
 
+![Knowledge base pipeline from source review to JSONL, local embeddings and UI catalogs](readme-assets/data-preparation.png)
+
+<details>
+<summary>Editable Mermaid source</summary>
+
 ```mermaid
-flowchart LR
+flowchart TB
     accTitle: Knowledge base preparation pipeline
     accDescr: Reviewed source material becomes immutable runtime inputs. JSONL feeds local embeddings and Chroma, while generated catalogs feed the UI.
     source_material["Collected source material"] --> data_review["Merge, deduplicate and QA"]
@@ -96,9 +112,18 @@ flowchart LR
     generated_catalogs --> city_pages["Sourced city pages"]
 ```
 
+</details>
+
+---
+
 The repository includes machine-readable release inputs, not private authoring notes or the exporter workspace. Do not manually edit pinned release files or change their hashes to bypass validation.
 
 ### Answer decisions
+
+![Answer routing for local replies, insufficient evidence, source pointers and hosted generation](readme-assets/answer-decisions.png)
+
+<details>
+<summary>Editable Mermaid source</summary>
 
 ```mermaid
 flowchart TD
@@ -114,6 +139,10 @@ flowchart TD
     generation --> answer_validation["Validate answer and build Sources"]
     answer_validation --> final_response["Answer, fallback or API error"]
 ```
+
+</details>
+
+---
 
 Evidence availability alone does not trigger a model call. Source pointers, greetings and scope refusals run locally. Provider configuration, paid-call permission, budget and deadline checks can also prevent generation. Citation checks reduce errors but do not prove sentence-level factual correctness.
 
@@ -372,6 +401,7 @@ The application log omits question text, evidence and credentials. The documente
 project-oberfranken/
 ├── README.md                  Public setup and architecture guide
 ├── .gitignore                 Private/generated-file exclusions
+├── readme-assets/             Rendered documentation diagrams
 ├── ui/                        Frontend source, assets, tests and npm lockfile
 ├── backend/                   RAG/API source, tests and uv lockfile
 │   ├── evaluation/            Frozen retrieval questions
