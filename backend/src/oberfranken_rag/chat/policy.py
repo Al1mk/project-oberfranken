@@ -100,9 +100,25 @@ TEXTS = {
                     "de": "Meine Quellen stützen keine verlässliche Antwort auf diese Frage."},
     "ambiguous": {"en": "Your question mentions more than one city. Please ask about Bamberg or Bayreuth separately.",
                   "de": "Deine Frage nennt mehr als eine Stadt. Bitte frage zu Bamberg oder Bayreuth getrennt."},
+    # Only for unresolved geography (kind `clarification`); asked once, never after a confirmed selection.
+    "clarify_city": {"en": "This pilot covers Bamberg and Bayreuth. Which city should I look at: Bamberg or Bayreuth?",
+                     "de": "Dieser Pilot behandelt Bamberg und Bayreuth. Zu welcher Stadt soll ich suchen: Bamberg oder Bayreuth?"},
+    # A confirmed selection that does not fit the question: a fixed answer, not another clarification.
+    "selection_mismatch": {"en": "Your city choice does not fit this question, so I did not apply it. Please ask again about Bamberg, Bayreuth or both pilot cities.",
+                           "de": "Deine Stadtauswahl passt nicht zu dieser Frage, deshalb habe ich sie nicht angewendet. Bitte frage erneut zu Bamberg, Bayreuth oder beiden Pilotstädten."},
 }
 def note(name, language): return TEXTS[name][language]
 def conflict_text(chosen, language):
     city = chosen.capitalize()
     return {"en": f"You are looking at {city}, but your question names another city. Please switch the city page or ask about {city}.",
             "de": f"Du siehst gerade {city}, deine Frage nennt aber eine andere Stadt. Bitte wechsle die Stadtseite oder frage zu {city}."}[language]
+def partial_coverage_text(covered, missing, language):
+    """Geography is known, but only one pilot city has suitable sources: name both, invent nothing for the other."""
+    covered, missing = covered.capitalize(), missing.capitalize()
+    return {"en": f"For this question I found suitable sources for {covered} only, not for {missing}, the other pilot city. Please check the linked sources.",
+            "de": f"Zu dieser Frage habe ich passende Quellen nur für {covered} gefunden, nicht für {missing}, die andere Pilotstadt. Bitte prüfe die verlinkten Quellen."}[language]
+def split_pointer_text(covered, language):
+    """Both pilot cities have usable sources, but safe static facts could be isolated for one city only: point to both."""
+    covered = covered.capitalize()
+    return {"en": f"Source pointer: I found sources for both pilot cities, Bamberg and Bayreuth, but could isolate reliable facts only for {covered}. Please check the linked sources.",
+            "de": f"Quellenhinweis: Ich habe Quellen für beide Pilotstädte, Bamberg und Bayreuth, gefunden, konnte verlässliche Fakten aber nur für {covered} isolieren. Bitte prüfe die verlinkten Quellen."}[language]

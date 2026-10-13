@@ -34,6 +34,7 @@ class ChatRequest(BaseModel):
     message: str
     city: Literal["bamberg", "bayreuth"] | None
     language: Literal["en", "de"]
+    selectedCity: Literal["bamberg", "bayreuth"] | None = None  # optional explicit choice; `city` stays the original page context
     @field_validator("message")
     @classmethod
     def _length(cls, value):
@@ -74,7 +75,7 @@ def create_app(service, settings):
         try: payload = ChatRequest.model_validate(json.loads(raw))
         except (ValueError, ValidationError): done("invalid_request"); return error(422, "invalid_request")
         try:
-            body = await asyncio.wait_for(run_in_threadpool(service.answer, payload.message, payload.city, payload.language, deadline),
+            body = await asyncio.wait_for(run_in_threadpool(service.answer, payload.message, payload.city, payload.language, deadline, selected_city=payload.selectedCity),
                                           timeout=max(0.0, deadline - time.monotonic()))
         except (asyncio.TimeoutError, TimeoutError):
             # The worker thread cannot be killed, but it cannot start a paid call after the deadline either, and an in-flight call stays reserved in the ledger.

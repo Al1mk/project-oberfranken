@@ -2,7 +2,7 @@
 import json
 import time
 from urllib.parse import urlparse
-from . import discovery, policy
+from . import discovery, geography, policy, regional_evidence
 from .evidence import DISCOVERY_EXCERPTS, discovery_citation, discovery_excerpt, relevant_records, reviewed_citation, reviewed_excerpt
 from .provider import ProviderError
 
@@ -20,6 +20,9 @@ Do not write any warning about limited sources or about checking the source; the
 Only cite ids of evidence blocks that were given to you, and cite a record only if you used at least one of its facts in the answer. Never cite a record just for a caveat, a limitation or advice to check a source.
 If the evidence does not support a reliable answer, set supported to false and leave the answer empty.
 Reply with JSON only: {{"supported": true|false, "answer": "...", "record_ids": ["ids of the evidence blocks whose facts you used"]}}."""
+REGIONAL = """
+This is an overview of the two-city pilot (Bamberg and Bayreuth), not a complete Upper Franconia guide. Each evidence block names its scope: bamberg, bayreuth, or shared Oberfranken background that is not a fact about either city.
+Give a concise Bamberg/Bayreuth distinction within the sentence limit, using and citing at least one Bamberg and one Bayreuth block. Never transfer a fact from one city to the other, and never compare them as better or worse."""
 
 def guarded(lock, deadline, clock, fn, *args):
     """Runs fn under a lock, but only waits for the lock until the request deadline (queueing counts against it)."""
@@ -42,6 +45,8 @@ class Reply(dict):
     reason = None
 
 class ChatService:
+    close_distance = 0.03  # close-to-best window, unchanged; shared with the per-city regional gates
+
     def __init__(self, records_by_id, retrieve_fn, provider, catalog, top_distance=0.20, item_distance=0.22, clock=time.monotonic):
         self.records, self.retrieve, self.provider, self.catalog, self.clock = records_by_id, retrieve_fn, provider, catalog, clock
         self.top_distance, self.item_distance = top_distance, item_distance
@@ -67,13 +72,16 @@ class ChatService:
         text = _clip("\n".join(p.strip() for p in (rec["content"], rec["enrichment"]) if p and p.strip()))
         return None if not text or policy.has_volatile(text) else text
 
-    def _prompt(self, message, city, evidence, language, route=None):
+    def _prompt(self, message, city, evidence, language, route=None, regional=False):
         blocks = []
         for rec, text in evidence:
             title = _plain(rec["title"]).replace('"', "'")
-            blocks.append(f'<evidence id="{rec["id"]}" status="{policy.api_status(rec["status"])}" title="{title}">\n{_plain(text)}\n</evidence>')
-        user = f"Question: {_plain(message)}\nCity context: {city or 'none'}\n\nEvidence:\n" + "\n".join(blocks)
+            scope = f' scope="{rec["city"] if rec["city"] in geography.CITIES else "shared Oberfranken"}"' if regional else ""
+            blocks.append(f'<evidence id="{rec["id"]}"{scope} status="{policy.api_status(rec["status"])}" title="{title}">\n{_plain(text)}\n</evidence>')
+        context = "Bamberg and Bayreuth (two-city pilot overview)" if regional else city or "none"
+        user = f"Question: {_plain(message)}\nCity context: {context}\n\nEvidence:\n" + "\n".join(blocks)
         system = SYSTEM.format(language=LANGUAGES[language])
+        if regional: system += REGIONAL
         if route and route.intent=='study':
             system += '\nThis is institutional study orientation for the Bamberg/Bayreuth pilot, not a complete Upper Franconia university directory. Describe only the universities supplied as evidence. For a regional overview describe both when both are supplied. Do not promise courses, admission, deadlines or costs.'
         elif route:
@@ -109,26 +117,24 @@ class ChatService:
                 "sourceName": name or meta.get("source_name") or _host(url), "sourceUrl": url, "topic": rec["topic"],
                 "retrievedAt": rec["retrieved_at"], "recordStatus": policy.api_status(rec["status"])}
 
-    def answer(self, message, city, language, deadline=None):
+    def answer(self, message, city, language, deadline=None, *, selected_city=None):
         message = message.strip()
         ui_language = language
         language = policy.reply_language(message, language)
         if policy.is_greeting(message): return self._reply("fallback", policy.note("greeting", language))
         if policy.is_out_of_scope(message): return self._reply("out-of-scope", policy.note("out_of_scope", language))
         if policy.outside_pilot_city(message): return self._reply("out-of-scope", policy.note("other_city", language))
-        named = policy.mentioned_cities(message)
-        if city and named - {city}: return self._reply("fallback", policy.conflict_text(city, language))
-        if not city and len(named) > 1: return self._reply("fallback", policy.note("ambiguous", language))
-        search_city = city or (next(iter(named)) if named else None)  # an inferred city never overrides an explicit one
-        # Only an explicitly regional, unnamed study overview spans the two pilots.
-        # Named conflicts and other multi-city questions already stopped above.
-        regional_study = discovery.regional_study(message)
-        if regional_study:
-            search_city = None
+        # One deterministic geography decision before any topic retrieval (no model). Clarification is free and source-free.
+        scope = geography.resolve_scope(message, city, selected_city)
+        if scope.basis == "conflict": return self._reply("fallback", policy.conflict_text(city, language))
+        if scope.basis == "mismatch": return self._reply("fallback", policy.note("selection_mismatch", language))
+        if scope.scope == "clarify": return self._reply("clarification", policy.note("clarify_city", language))
+        if scope.answer_mode == "regional-overview": return regional_evidence.answer(self, message, language, ui_language, deadline)
+        search_city = scope.target_cities[0] if scope.scope == "city" else None  # an ordinary fact searches the whole pilot
         route = discovery.interpret(message, search_city)
-        if route and not search_city and not regional_study:
-            return self._reply("fallback", policy.note("choose_city", language))
-        found = self.retrieve(route.query if route else message, search_city, deadline)
+        # A confirmed choice is part of the request, so it adds its city to the retrieval query only (the prompt keeps the question).
+        query = route.query if route else regional_evidence.city_query(message, search_city) if scope.basis == "confirmed-choice" else message
+        found = self.retrieve(query, search_city, deadline)
         self._check(deadline)  # retrieval may have used up the time: never start a paid call after the deadline
         if route:
             found = [r for r in found if r.id in self.records and discovery.eligible(route, self.records[r.id])
@@ -142,14 +148,17 @@ class ChatService:
 
         texts = {rec["id"]: self._evidence_text(rec, discovery=bool(route) and route.intent!='study') for rec in near}
         best = distances[near[0]["id"]]
-        close = [rec for rec in near if distances[rec["id"]] <= best + 0.03]
+        close = [rec for rec in near if distances[rec["id"]] <= best + self.close_distance]
         if policy.asks_live_details(message):
             return self._reply("answer", policy.note("signpost", language), [self._source(rec, ui_language, discovery=bool(route)) for rec in close[:3]])
         evidence = [(rec, texts[rec["id"]]) for rec in close if texts[rec["id"]] is not None][:5]
         if not evidence:
             return self._reply("answer", policy.note("static_pointer", language), [self._source(rec, ui_language, discovery=bool(route)) for rec in close[:3]])
+        return self._generate(message, search_city, evidence, language, ui_language, route, deadline)
 
-        system, user = self._prompt(message, search_city, evidence, language, route)
+    def _generate(self, message, city, evidence, language, ui_language, route, deadline, cover=()):
+        """ONE provider call over the supplied evidence. `cover` names cities that each need a cited city-specific record."""
+        system, user = self._prompt(message, city, evidence, language, route, regional=bool(cover))
         data = self._parse(self.provider.complete(system, user, deadline))
         supplied = {rec["id"]: (rec, text) for rec, text in evidence}
         cited = list(dict.fromkeys(data["record_ids"]))
@@ -163,6 +172,8 @@ class ChatService:
         if not policy.numbers_supported(answer, [supplied[i][1] for i in cited]): return self._reply("fallback", unsupported, reason="unsupported_number")
 
         recs = [supplied[i][0] for i in cited]
+        # A two-city overview must cite each city's own record (citation coverage, not sentence entailment); never pad sources.
+        if not set(cover) <= {r["city"] for r in recs}: return self._reply("fallback", unsupported, reason="missing_citations")
         text = answer
         if route and route.intent=='study':
             text += '\n\n' + ('This pilot covers study orientation in Bamberg and Bayreuth only; it is not a complete university directory for Upper Franconia.' if language=='en' else 'Dieser Pilot bietet Studienorientierung nur für Bamberg und Bayreuth; er ist kein vollständiges Hochschulverzeichnis für Oberfranken.')

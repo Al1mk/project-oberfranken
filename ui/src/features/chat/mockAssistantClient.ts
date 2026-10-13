@@ -14,8 +14,9 @@ type MockRule = {
 };
 
 const has = (text: string, ...words: string[]) => words.some((word) => text.includes(word));
+const pageCity = (request: AssistantRequest) => request.selectedCity ?? request.city;
 const cityIs = (text: string, request: AssistantRequest, city: "bamberg" | "bayreuth") =>
-  text.includes(city) || (request.city === city && !has(text, city === "bamberg" ? "bayreuth" : "bamberg"));
+  text.includes(city) || (pageCity(request) === city && !has(text, city === "bamberg" ? "bayreuth" : "bamberg"));
 
 const RULES: MockRule[] = [
   {
@@ -35,6 +36,19 @@ const RULES: MockRule[] = [
     reply: {
       en: "Visa, legal, medical and job questions are outside the scope of this pilot. Please use the official advisory services of your city or university for these topics.",
       de: "Fragen zu Visum, Recht, Gesundheit und Jobs liegen außerhalb des Pilotumfangs. Bitte nutze dafür die offiziellen Beratungsangebote deiner Stadt oder Universität.",
+    },
+  },
+  {
+    id: "clarify-city",
+    kind: "clarification",
+    // A broad place question with no city named, no page city and no explicit selection.
+    matches: (text, request) =>
+      !pageCity(request) &&
+      !has(text, "bamberg", "bayreuth") &&
+      /\b(restaurants?|sights?|sightseeing|attractions?|sehenswürdigkeiten|sehenswuerdigkeiten|essen gehen|activit\w*|museums?|traditions?|aktivit\w*)\b/.test(text),
+    reply: {
+      en: "Sample reply: which city do you mean, Bamberg or Bayreuth?",
+      de: "Beispielantwort: Welche Stadt meinst du, Bamberg oder Bayreuth?",
     },
   },
   {

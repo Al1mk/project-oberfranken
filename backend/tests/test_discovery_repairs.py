@@ -33,7 +33,7 @@ def test_typo_city_cannot_override_page(records):
 def test_missing_city_discovery_is_local(records, question):
     service, retriever, provider = setup([records['BA-REST-01']])
     reply = service.answer(question, None, 'en')
-    assert reply['kind'] == 'fallback' and 'Bamberg or Bayreuth' in reply['text']
+    assert reply['kind'] == 'clarification' and 'Bamberg or Bayreuth' in reply['text'] and reply['sources'] == []
     assert retriever.calls == provider.calls == []
 
 def test_irrelevant_best_does_not_unlock_weak_relevant(records):

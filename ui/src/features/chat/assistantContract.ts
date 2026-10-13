@@ -16,7 +16,7 @@ export class AssistantError extends Error {
   }
 }
 
-const KINDS: readonly AssistantReplyKind[] = ["answer", "out-of-scope", "fallback"];
+const KINDS: readonly AssistantReplyKind[] = ["answer", "out-of-scope", "fallback", "clarification"];
 const STATUSES = ["verified", "limited"] as const;
 
 function contract(detail: string): never {
@@ -69,7 +69,7 @@ export function parseAssistantReply(value: unknown): AssistantReply {
   const body = value as Record<string, unknown>;
 
   const text = nonEmpty(body.text, "text");
-  if (!(KINDS as readonly unknown[]).includes(body.kind)) contract("kind must be answer, out-of-scope or fallback");
+  if (!(KINDS as readonly unknown[]).includes(body.kind)) contract("kind must be answer, out-of-scope, fallback or clarification");
   const kind = body.kind as AssistantReplyKind;
   if (typeof body.isSample !== "boolean") contract("isSample must be a boolean");
   if (!Array.isArray(body.sources)) contract("sources is required and must be an array");

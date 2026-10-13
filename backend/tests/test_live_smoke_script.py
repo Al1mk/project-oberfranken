@@ -32,3 +32,15 @@ def test_problems_are_found(parts):
 def test_a_changing_record_cited_as_an_answer_source_is_flagged(parts):
     by_id, _ = parts; changing = next(r for r in by_id.values() if r["answer_policy"] != "normal")
     assert any("changing" in p for p in smoke.check_reply(good(changing), by_id))
+
+def test_a_source_free_clarification_is_accepted(parts):
+    by_id, _ = parts
+    assert smoke.check_reply({"text": "Which city do you mean?", "kind": "clarification", "isSample": False, "sources": []}, by_id) == []
+
+def test_a_clarification_with_sources_or_other_flaws_is_rejected(parts):
+    by_id, rec = parts
+    base = {"text": "Which city?", "kind": "clarification", "isSample": False, "sources": []}
+    assert any("non-answer" in p for p in smoke.check_reply({**base, "sources": good(rec)["sources"]}, by_id))
+    assert any("empty text" in p for p in smoke.check_reply({**base, "text": " "}, by_id))
+    assert any("isSample" in p for p in smoke.check_reply({**base, "isSample": True}, by_id))
+    assert any("bad kind" in p for p in smoke.check_reply({**base, "kind": "chitchat"}, by_id))

@@ -27,7 +27,7 @@ def check_reply(reply, records_by_id):
     problems = []
     if not isinstance(reply, dict) or set(reply) != {"text", "kind", "isSample", "sources"}: return ["reply fields are not exactly text, kind, isSample, sources"]
     if not isinstance(reply["text"], str) or not reply["text"].strip(): problems.append("empty text")
-    if reply["kind"] not in ("answer", "out-of-scope", "fallback"): problems.append("bad kind")
+    if reply["kind"] not in ("answer", "out-of-scope", "fallback", "clarification"): problems.append("bad kind")
     if reply["isSample"] is not False: problems.append("isSample is not false")
     if not isinstance(reply["sources"], list): return problems + ["sources is not a list"]
     if reply["kind"] == "answer" and not reply["sources"]: problems.append("answer without sources")

@@ -86,9 +86,14 @@ def test_conflicting_city_is_answered_conservatively_without_retrieval():
     assert body["kind"] == "fallback" and retriever.calls == [] and provider.calls == []
     assert "Bamberg" in body["text"]
 
-def test_two_cities_without_explicit_city_is_ambiguous():
-    a = record(); service, retriever, _ = make([a], [result(a)])
-    assert ask(service, "Compare Bamberg and Bayreuth food", city=None)["kind"] == "fallback" and retriever.calls == []
+def test_two_city_comparison_searches_each_city_and_alternatives_clarify():
+    # Replaces "two named cities are always ambiguous": an explicit AND/compare is a two-city overview (one search per city);
+    # Bamberg OR Bayreuth alternatives still ask for a city without any retrieval.
+    a = record(); service, retriever, provider = make([a], [result(a)])
+    ask(service, "Compare Bamberg and Bayreuth food", city=None)
+    assert [c for _, c in retriever.calls] == ["bamberg", "bayreuth"] and provider.calls == []  # no Bayreuth evidence: no paid call
+    retriever.calls.clear()
+    assert ask(service, "Restaurants in Bamberg or Bayreuth?", city=None)["kind"] == "clarification" and retriever.calls == []
 
 def test_city_named_in_question_is_used_when_no_explicit_city():
     a = record(); service, retriever, _ = make([a], [result(a)])

@@ -12,9 +12,11 @@ export type AssistantRequest = {
   message: string;
   city: CitySlug | null;
   language: Language;
+  /** An explicit city choice (answer to a clarification); `city` stays the original page context. */
+  selectedCity?: CitySlug | null;
 };
 
-export type AssistantReplyKind = "answer" | "out-of-scope" | "fallback";
+export type AssistantReplyKind = "answer" | "out-of-scope" | "fallback" | "clarification";
 
 /** One knowledge-base record an answer is based on. */
 export type AssistantSource = {
@@ -34,7 +36,7 @@ export type AssistantReply = {
   kind: AssistantReplyKind;
   /** True when the reply is pre-written sample content rather than a grounded answer. */
   isSample: boolean;
-  /** Sources of this reply. Non-empty for `answer`, empty otherwise (enforced for HTTP replies). */
+  /** Sources of this reply. Non-empty for `answer`, empty otherwise (including `clarification`) (enforced for HTTP replies). */
   sources: AssistantSource[];
 };
 

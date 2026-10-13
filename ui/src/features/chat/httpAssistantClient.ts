@@ -41,7 +41,13 @@ export function createHttpAssistantClient({ endpoint = "/api/chat", timeoutMs = 
           response = await doFetch(endpoint, {
             method: "POST",
             headers: { "Content-Type": "application/json", Accept: "application/json" },
-            body: JSON.stringify({ message: request.message, city: request.city, language: request.language }),
+            // selectedCity is only serialized when the caller provides it, so legacy request bodies stay byte-identical.
+            body: JSON.stringify({
+              message: request.message,
+              city: request.city,
+              language: request.language,
+              ...(request.selectedCity !== undefined && { selectedCity: request.selectedCity }),
+            }),
             signal: controller.signal,
           });
         } catch (error) {

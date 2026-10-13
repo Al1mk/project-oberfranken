@@ -15,6 +15,7 @@ const SOURCE = {
   recordStatus: "verified",
 };
 const ANSWER = { text: "Try the Bamberg onion.", kind: "answer", isSample: false, sources: [SOURCE] };
+const CLARIFICATION = { text: "Which city do you mean?", kind: "clarification", isSample: false, sources: [] };
 const FALLBACK = { text: "I do not know.", kind: "fallback", isSample: false, sources: [] };
 const REQUEST: AssistantRequest = { message: "Where can I try smoked beer?", city: "bamberg", language: "en" };
 
@@ -31,6 +32,12 @@ describe("parseAssistantReply (response contract)", () => {
   it("accepts fallback and out-of-scope replies with an empty sources array", () => {
     expect(parseAssistantReply(FALLBACK).sources).toEqual([]);
     expect(parseAssistantReply({ ...FALLBACK, kind: "out-of-scope" }).kind).toBe("out-of-scope");
+  });
+
+  it("accepts a source-free clarification, and rejects one that lists sources", () => {
+    expect(parseAssistantReply(CLARIFICATION)).toEqual(CLARIFICATION);
+    expect(contractError({ ...CLARIFICATION, sources: [SOURCE] }).code).toBe("contract");
+    expect(contractError({ ...CLARIFICATION, sources: undefined }).code).toBe("contract");
   });
 
   it("accepts an ISO timestamp as retrievedAt", () => {
@@ -103,6 +110,19 @@ describe("createHttpAssistantClient", () => {
     expect(init.method).toBe("POST");
     expect(init.headers["Content-Type"]).toBe("application/json");
     expect(JSON.parse(init.body)).toEqual({ message: REQUEST.message, city: "bamberg", language: "en" });
+  });
+
+  it("serializes selectedCity when provided, keeps legacy bodies byte-identical when absent, and sends an explicit null", async () => {
+    const fetchImpl = vi.fn().mockImplementation(async () => json(CLARIFICATION));
+    const client = createHttpAssistantClient({ fetchImpl });
+    await client.send({ ...REQUEST, city: null, selectedCity: "bayreuth" });
+    await client.send(REQUEST);
+    await client.send({ ...REQUEST, selectedCity: null });
+    expect(fetchImpl.mock.calls[0]![1].body).toBe(JSON.stringify({ message: REQUEST.message, city: null, language: "en", selectedCity: "bayreuth" }));
+    expect(fetchImpl.mock.calls[1]![1].body).toBe(JSON.stringify({ message: REQUEST.message, city: "bamberg", language: "en" }));
+    expect(fetchImpl.mock.calls[2]![1].body).toBe(JSON.stringify({ message: REQUEST.message, city: "bamberg", language: "en", selectedCity: null }));
+    expect((await client.send(REQUEST)).kind).toBe("clarification");
+    expect(fetchImpl.mock.calls[3]![0]).toBe("/api/chat");
   });
 
   it("sends city null for the general context and honours a custom endpoint", async () => {
@@ -186,6 +206,23 @@ describe("selectAssistantClient (bootstrap choice)", () => {
   it("refuses the mock in production and unknown modes anywhere", () => {
     expect(() => selectAssistantClient({ mode: "mock", production: true })).toThrow(/not allowed in a production build/);
     expect(() => selectAssistantClient({ mode: "demo", production: false })).toThrow(/must be "mock" or "http"/);
+  });
+
+  it("answers a broad Home place question with a sample clarification and never calls fetch", async () => {
+    const fetchImpl = vi.spyOn(globalThis, "fetch").mockRejectedValue(new Error("no network in the mock"));
+    const client = createMockAssistantClient({ delayMs: 1 });
+    const home = { message: "Which restaurants should I try?", city: null, language: "en" } as const;
+    const reply = await client.send(home);
+    expect(reply).toMatchObject({ kind: "clarification", isSample: true, sources: [] });
+    expect(reply.text.trim()).not.toBe("");
+    expect((await client.send({ ...home, language: "de" })).kind).toBe("clarification");
+    const resolved = await client.send({ message: "What cultural activities are there?", city: null, selectedCity: "bayreuth", language: "en" });
+    expect(resolved).toMatchObject({ kind: "answer", isSample: true });
+    expect(resolved.text).toContain("Bayreuth");
+    expect((await client.send({ message: "What cultural activities are there?", city: null, language: "en" })).kind).toBe("clarification");
+    expect((await client.send({ ...home, city: "bamberg" })).kind).not.toBe("clarification");
+    expect(fetchImpl).not.toHaveBeenCalled();
+    fetchImpl.mockRestore();
   });
 
   it("gives mock replies an empty source list", async () => {

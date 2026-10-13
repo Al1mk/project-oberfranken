@@ -45,12 +45,21 @@ class FakeRetriever:
         if self.on_call: self.on_call()
         return list(self.results)
 
+class CityRetriever:
+    """Per-city results {city: [results]} (None = the city-less pilot search); records (question, city, deadline)."""
+    def __init__(self, by_city, on_call=None):
+        self.by_city, self.on_call, self.calls = by_city, on_call, []
+    def __call__(self, question, city, deadline=None):
+        self.calls.append((question, city, deadline))
+        if self.on_call: self.on_call()
+        return list(self.by_city.get(city, []))
+
 def contract_ok(body):
     """The UI's response contract (ui/src/features/chat/assistantContract.ts), restated."""
     import re
     assert set(body) == {"text", "kind", "isSample", "sources"}
     assert isinstance(body["text"], str) and body["text"].strip()
-    assert body["kind"] in ("answer", "out-of-scope", "fallback")
+    assert body["kind"] in ("answer", "out-of-scope", "fallback", "clarification")  # clarification: fixed city choice, never sources
     assert body["isSample"] is False
     assert isinstance(body["sources"], list)
     if body["kind"] == "answer": assert len(body["sources"]) >= 1

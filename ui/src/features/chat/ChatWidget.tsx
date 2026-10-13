@@ -3,18 +3,24 @@ import { Link } from "react-router";
 import { MapPin, MessageCircle, SendHorizontal, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import type { CityPageData } from "@/data/types";
+import { CITY_PAGES } from "@/data/cityPages";
+import type { CityPageData, CitySlug } from "@/data/types";
 import { useI18n } from "@/i18n/LanguageContext";
 import { cn } from "@/lib/utils";
 import type { AssistantReply, AssistantRequest } from "./assistantClient";
 import { AssistantError, type AssistantErrorCode } from "./assistantContract";
 import { useChat } from "./ChatContext";
 import { ChatSources } from "./ChatSources";
+import { CityClarification } from "./CityClarification";
+import { bareCity, useCityClarification } from "./useCityClarification";
 
 type ChatMessage = { id: number; role: "user"; text: string } | ({ id: number; role: "assistant" } & AssistantReply);
 
-/** A failed request, kept whole so "Try again" resends exactly what failed (same city and language) without a second user bubble. */
-type ChatFailure = { request: AssistantRequest; code: AssistantErrorCode | "unknown"; status?: number };
+/**
+ * A failed request, kept whole so "Try again" resends exactly what failed (same city and language) without a second user bubble.
+ * `scope` marks a selected-city request: its retry belongs to that clarification generation and ends with it.
+ */
+type ChatFailure = { request: AssistantRequest; code: AssistantErrorCode | "unknown"; status?: number; scope?: number };
 
 type ChatWidgetProps = {
   /** The city page the user is on, if any. Shown as context and sent with each request. */
@@ -43,13 +49,12 @@ export function ChatWidget({ city }: ChatWidgetProps) {
   const pending = useRef<AbortController | null>(null);
 
   const place = city?.name ?? t.chat.greetingRegion;
-  const suggestionCity = city?.name ?? "Bamberg";
-  const suggestions = [
-    city ? localize(city.assistantExample) : language === "de" ? "Welche regionale Tradition sollte ich in Bamberg kennen?" : "What regional tradition should I know in Bamberg?",
-    t.chat.suggestSights(suggestionCity),
-    t.chat.suggestRestaurants(suggestionCity),
-    t.chat.suggestSport(suggestionCity),
-  ];
+  // Home is balanced: one question per pilot city and two for the whole pilot region. City pages keep their own city.
+  const suggestions = city
+    ? [localize(city.assistantExample), t.chat.suggestSights(city.name), t.chat.suggestRestaurants(city.name), t.chat.suggestSport(city.name)]
+    : [localize(CITY_PAGES.bamberg.assistantExample), localize(CITY_PAGES.bayreuth.assistantExample), t.chat.suggestRegionalFood, t.chat.suggestSport(t.chat.bothCities)];
+
+  const clarification = useCityClarification(`${city?.slug ?? ""}|${language}`, discardRequestState);
 
   useEffect(() => {
     if (isOpen) inputRef.current?.focus({ preventScroll: true });
@@ -76,30 +81,60 @@ export function ChatWidget({ city }: ChatWidgetProps) {
     launcherRef.current?.focus();
   }
 
+  /**
+   * Called on every clarification reset. The in-flight browser request is aborted (an already started server call
+   * still runs and is never repeated); its generation is stale, so it can no longer touch this state. A
+   * selected-city retry ends with its clarification; ordinary failures keep their retry across context changes.
+   */
+  function discardRequestState() {
+    pending.current?.abort();
+    pending.current = null;
+    if (status === "loading" || failure?.scope !== undefined) {
+      setStatus("idle");
+      setFailure(null);
+    }
+  }
+
   /** Asks the assistant. Does not touch the user's message, so a retry never duplicates it. */
-  async function ask(request: AssistantRequest) {
+  async function ask(request: AssistantRequest, scope?: number) {
+    const token = clarification.token();
     setStatus("loading");
     setFailure(null);
     const controller = new AbortController();
     pending.current = controller;
     try {
       const reply = await client.send(request, { signal: controller.signal });
-      setMessages((current) => [...current, { id: nextId.current++, role: "assistant", ...reply }]);
+      if (!clarification.isCurrent(token)) return;
+      const id = nextId.current++;
+      setMessages((current) => [...current, { id, role: "assistant", ...reply }]);
+      // A request that already carries a selected city is never asked to choose again.
+      if (reply.kind === "clarification" && request.selectedCity == null) clarification.offer(request, id, token);
       setStatus("idle");
     } catch (error) {
-      if ((error as Error).name === "AbortError") return;
+      if (!clarification.isCurrent(token) || (error as Error).name === "AbortError") return;
+      const kept = scope === undefined ? {} : { scope };
       setFailure(
         error instanceof AssistantError
-          ? { request, code: error.code, ...(error.status !== undefined && { status: error.status }) }
-          : { request, code: "unknown" },
+          ? { request, code: error.code, ...(error.status !== undefined && { status: error.status }), ...kept }
+          : { request, code: "unknown", ...kept },
       );
       setStatus("error");
+    } finally {
+      if (pending.current === controller) pending.current = null;
     }
   }
 
   async function send(text: string) {
     const message = text.trim();
-    if (message === "" || status === "loading") return;
+    if (message === "" || status === "loading" || pending.current) return;
+    // A bare pilot city answers the pending clarification; anything else is a new question and discards it.
+    const typedCity = clarification.pending && bareCity(message);
+    if (typedCity) {
+      setDraft("");
+      choose(typedCity);
+      return;
+    }
+    if (clarification.pending) clarification.reset();
     setMessages((current) => [...current, { id: nextId.current++, role: "user", text: message }]);
     setDraft("");
     // Suggestion buttons unmount after the first message; keep focus in the composer.
@@ -107,10 +142,27 @@ export function ChatWidget({ city }: ChatWidgetProps) {
     await ask({ message, city: city?.slug ?? null, language });
   }
 
+  /** Resends the original question, page city and language with the chosen city. Shows the choice once; no navigation, no sticky city. */
+  function choose(selectedCity: CitySlug) {
+    if (pending.current) return;
+    const snapshot = clarification.consume();
+    if (!snapshot) return;
+    const { message, city: pageCity, language: snapshotLanguage } = snapshot.request;
+    setMessages((current) => [...current, { id: nextId.current++, role: "user", text: CITY_PAGES[selectedCity].name }]);
+    inputRef.current?.focus();
+    void ask({ message, city: pageCity, language: snapshotLanguage, selectedCity }, snapshot.generation);
+  }
+
+  function cancelClarification() {
+    clarification.reset();
+    inputRef.current?.focus();
+  }
+
   function retry() {
-    if (failure && status === "error") {
+    if (failure && status === "error" && !pending.current) {
+      if (failure.scope !== undefined && !clarification.isCurrent(failure.scope)) return;
       inputRef.current?.focus();
-      void ask(failure.request);
+      void ask(failure.request, failure.scope);
     }
   }
 
@@ -213,6 +265,9 @@ export function ChatWidget({ city }: ChatWidgetProps) {
               </p>
               {message.role === "assistant" && message.isSample && <span className="mt-1 pl-1 text-xs text-muted-foreground">{t.chat.sampleResponse}</span>}
               {message.role === "assistant" && <ChatSources sources={message.sources} />}
+              {message.id === clarification.pending?.messageId && message.id === messages.at(-1)?.id && (
+                <CityClarification onChoose={choose} onCancel={cancelClarification} disabled={status === "loading"} />
+              )}
             </li>
           ))}
           {status === "loading" && (

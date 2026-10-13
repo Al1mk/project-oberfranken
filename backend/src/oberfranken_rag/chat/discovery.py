@@ -85,9 +85,6 @@ STUDY_WORDS = COMMON_WORDS | frozenset('study studying studies university univer
 def is_study_overview(message):
     return bool(re.search(r'\b(?:wo|where)\b.*\b(?:studieren|study|studying)\b|\b(?:which|what|welche)\b.*\b(?:universities|hochschulen|universitäten)\b',message,re.I))
 
-def regional_study(message):
-    return is_study_overview(message) and not policy.mentioned_cities(message) and bool(re.search(r'\b(?:oberfranken|upper franconia)\b',message,re.I))
-
 def study_query(city):
     return f'{city} Universität Studium studieren Studienort' if city else 'Universität Bamberg Universität Bayreuth Studium studieren Hochschulen'
 

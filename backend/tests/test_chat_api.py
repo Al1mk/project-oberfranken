@@ -114,8 +114,8 @@ def test_a_slow_request_is_cut_off_at_the_deadline_with_a_504_and_no_late_paid_c
 
 def test_the_api_passes_one_deadline_below_the_ui_timeout_to_the_service():
     class Spy(ChatService):
-        def answer(self, message, city, language, deadline=None):
-            Spy.deadline = deadline; return super().answer(message, city, language, deadline)
+        def answer(self, message, city, language, deadline=None, *, selected_city=None):
+            Spy.deadline = deadline; Spy.selected = selected_city; return super().answer(message, city, language, deadline, selected_city=selected_city)
     import time
     rec = record(); service = Spy({rec["id"]: rec}, FakeRetriever([result(rec)]), FakeProvider(), {})
     c = TestClient(create_app(service, S.Settings()), raise_server_exceptions=False)
@@ -163,3 +163,33 @@ def test_a_reason_that_is_not_in_the_fixed_set_is_never_logged(caplog):
             r = Reply({"text": "x", "kind": "fallback", "isSample": False, "sources": []}); r.reason = "SENTINEL free text from somewhere"; return r
     rec = record(); c = TestClient(create_app(Odd({rec["id"]: rec}, FakeRetriever([result(rec)]), FakeProvider(), {}), S.Settings()), raise_server_exceptions=False)
     c.post("/api/chat", json=GOOD); assert "SENTINEL" not in caplog.text and logged_reasons(caplog) == []
+
+
+# ---------------------------------------------------------------- optional selectedCity (Task 4)
+@pytest.mark.parametrize("extra", [{}, {"selectedCity": None}, {"selectedCity": "bamberg"}, {"selectedCity": "bayreuth"}])
+def test_selected_city_is_optional_and_accepts_the_two_pilot_cities(extra):
+    c, _ = client(); r = c.post("/api/chat", json={**GOOD, **extra})
+    assert r.status_code == 200; contract_ok(r.json())
+
+@pytest.mark.parametrize("bad", ["Bamberg", "munich", "", 1, True, [], {}])
+def test_invalid_selected_city_is_422(bad):
+    c, _ = client(); r = c.post("/api/chat", json={**GOOD, "selectedCity": bad})
+    assert r.status_code == 422 and r.json() == {"error": {"code": "invalid_request", "message": "The request is not valid."}}
+
+def test_selected_city_is_forwarded_by_keyword_and_the_deadline_stays_positional():
+    seen = []
+    class Rec(ChatService):
+        def answer(self, message, city, language, deadline=None, *, selected_city=None):
+            seen.append((city, deadline, selected_city)); return super().answer(message, city, language, deadline, selected_city=selected_city)
+    rec = record(); c = TestClient(create_app(Rec({rec["id"]: rec}, FakeRetriever([result(rec)]), FakeProvider(), {}), S.Settings()), raise_server_exceptions=False)
+    c.post("/api/chat", json={**GOOD, "selectedCity": "bayreuth"}); c.post("/api/chat", json=GOOD)
+    assert seen[0][2] == "bayreuth" and isinstance(seen[0][1], float) and seen[0][0] == "bamberg"
+    assert seen[1][2] is None and isinstance(seen[1][1], float)
+
+def test_a_clarification_reply_passes_through_with_four_fields_and_no_sources():
+    c, _ = client(); r = c.post("/api/chat", json={"message": "Restaurants in Bamberg or Bayreuth?", "city": None, "language": "en"})
+    body = r.json()
+    assert r.status_code == 200 and body["kind"] == "clarification" and body["sources"] == [] and body["isSample"] is False
+    assert set(body) == {"text", "kind", "isSample", "sources"} and body["text"].strip(); contract_ok(body)
+    r2 = c.post("/api/chat", json={**GOOD, "selectedCity": "bayreuth"})  # a mismatched selection is a fallback, not a clarification
+    assert r2.status_code == 200 and r2.json()["kind"] == "fallback"

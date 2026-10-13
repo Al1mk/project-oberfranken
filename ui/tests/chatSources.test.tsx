@@ -40,6 +40,15 @@ async function openChat(client: AssistantClient, path = "/bamberg") {
 }
 
 describe("sources in the chat", () => {
+  it("renders a clarification reply as an ordinary bubble without a source list", async () => {
+    const { client } = scripted([{ text: "Which city do you mean?", kind: "clarification", isSample: false, sources: [] }]);
+    const { ask, log } = await openChat(client, "/");
+    await ask("Which restaurants?");
+    await screen.findByText("Which city do you mean?");
+    expect(within(log()).queryByText(/sources?/i)).toBeNull();
+    expect(within(log()).queryAllByRole("link")).toHaveLength(0);
+  });
+
   it("renders each message's sources beneath that message only", async () => {
     const { client } = scripted([
       answer("Try the Bamberg onion.", [source()]),

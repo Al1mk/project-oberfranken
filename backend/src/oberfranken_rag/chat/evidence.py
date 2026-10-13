@@ -182,3 +182,29 @@ def relevant_records(message, records):
             continue
         output.append(rec)
     return output
+
+# Bounded question families (EN/DE cue words) and record anchor vocabulary for the regional topic gate. A record passes when its
+# topic is a detected family, or when its own title + evidence text carries that family's anchors (a historical passage inside
+# a food record stays eligible). A question without a detected family is not gated. No model, no embedding: a neighbour is not support.
+FAMILY_CUES = {
+    "local-traditions": re.compile(r"\b(?:traditions?|traditional|customs?|bräuche?|brauchtum|traditionen|traditionell\w*|dialect|dialekt\w*|folklore|feste?|festivals?)\b", re.I),
+    "regional-food": re.compile(r"\b(?:food|foods|dish(?:es)?|cuisine|culinary|eat|eating|specialit(?:y|ies)|specialt(?:y|ies)|beer|essen|gericht\w*|küche|kulinar\w*|spezialität\w*|bier\w*|speise\w*)\b", re.I),
+    "cultural-places": re.compile(r"\b(?:museums?|museen|sights?|sightseeing|sehenswürdig\w*|monuments?|denkmal\w*|churche?s?|kirchen?|castles?|palaces?|schl(?:oss|össer)|opera|oper\w*|theat(?:re|er)s?|galler(?:y|ies)|galerie\w*|architecture|architektur)\b", re.I),
+    "local-history": re.compile(r"\b(?:history|historic\w*|histor\w*|geschicht\w*|vergangenheit|medieval|mittelalter\w*|century|centuries|jahrhundert\w*|founded|gegründet)\b", re.I),
+    "newcomer-essentials": re.compile(r"\b(?:register\w*|registration|anmeld\w*|ummeld\w*|wohnsitz\w*|address|adresse|residence|aufenthalt\w*|visa|visum|insurance|versicherung\w*|bank|konto|enrol\w*|immatrikul\w*|newcomers?|arrival|ankunft|universit\w*|hochschul\w*|study|studying|studieren|studium)\b", re.I),
+    "activities-fun": re.compile(r"\b(?:fun|leisure|freizeit\w*|things\s+to\s+do|unternehm\w*|activit\w*|aktivität\w*|nightlife|nachtleben|hobb\w*|sports?|sport\w*|party|go\s+out|ausgehen|ausfl[uü]g\w*|excursions?|hiking|wandern)\b", re.I),
+}
+FAMILY_ANCHORS = {
+    "local-traditions": re.compile(r"tradition|brauch|bräuch|überliefer|\bfest(?:e|es|en)?\b|volksfest|kirchweih|kerwa|dialekt|mundart|sitte", re.I),
+    "regional-food": re.compile(r"essen|speise|gericht|küche|kulinar|spezialität|bier|brau|wurst|genuss|\bfood|\bdish|cuisine|\bbeer", re.I),
+    "cultural-places": re.compile(r"museum|museen|sehenswürdig|schloss|schlöss|kirche|\bdom\b|\boper|theater|denkmal|welterbe|unesco|galerie|kunst|architektur|residenz", re.I),
+    "local-history": re.compile(r"geschicht|histor|jahrhundert|mittelalter|gegründet|gründung|urkundlich|epoche|\bcentury|medieval", re.I),
+    "newcomer-essentials": re.compile(r"anmeld|ummeld|wohnsitz|meldebehörde|bürgeramt|bürgerbüro|einwohner|aufenthalt|ausländerbehörde|visum|versicherung|konto|immatrikul|einschreib|bewerb|studium|studierend|universität|hochschul|wohnheim|semesterticket|international", re.I),
+    "activities-fun": re.compile(r"freizeit|sport|verein|aktivität|nachtleben|kneipe|wander|radfahr|\bbaden|schwimm|ausflug|ausflüg|konzert|kino|theater|hobby|gruppe|\bspiel|party", re.I),
+}
+
+def question_families(message):
+    return {family for family, cue in FAMILY_CUES.items() if cue.search(message)}
+
+def on_topic(families, rec, text):
+    return not families or rec.get("topic") in families or any(FAMILY_ANCHORS[f].search(f"{rec.get('title', '')}\n{text}") for f in families)

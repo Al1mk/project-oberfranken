@@ -207,6 +207,10 @@ const en = {
     suggestRestaurants: (city: string) => `Which restaurant in ${city} serves a typical regional dish?`,
     suggestSights: (city: string) => `Which sights in ${city} should I see first?`,
     suggestSport: (city: string) => `Which sports clubs in ${city} can I watch or join?`,
+    suggestRegionalFood: "Which regional dishes are typical in Upper Franconia?",
+    bothCities: "Bamberg and Bayreuth",
+    cityChoiceLabel: "Choose a city",
+    cityChoiceCancel: "Cancel",
   },
   privacy: {
     title: "Privacy settings",
@@ -519,6 +523,10 @@ const de: Messages = {
     suggestRestaurants: (city: string) => `Welches Restaurant in ${city} bietet ein typisches regionales Gericht?`,
     suggestSights: (city: string) => `Welche Sehenswürdigkeiten in ${city} sollte ich zuerst ansehen?`,
     suggestSport: (city: string) => `Bei welchen Sportvereinen in ${city} kann ich zuschauen oder mitmachen?`,
+    suggestRegionalFood: "Welche regionalen Gerichte sind typisch für Oberfranken?",
+    bothCities: "Bamberg und Bayreuth",
+    cityChoiceLabel: "Stadt auswählen",
+    cityChoiceCancel: "Abbrechen",
   },
   privacy: {
     title: "Datenschutzeinstellungen",
